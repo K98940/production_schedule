@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ViewTopMenu from './views/ViewTopMenu.vue'
 import ViewCalendar from './views/ViewCalendar.vue'
 import { handleMouseUp } from './handlers/handleMouseUp'
 import { handleMouseMove } from './handlers/handleMouseMove'
@@ -11,6 +12,7 @@ import { handleMouseMove } from './handlers/handleMouseMove'
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseUp"
   >
+    <ViewTopMenu />
     <ViewCalendar />
   </div>
 </template>
@@ -19,7 +21,7 @@ import { handleMouseMove } from './handlers/handleMouseMove'
 .app-container {
   height: 100dvh;
   padding-inline: 1rem;
-  padding-block-start: 10rem;
+  padding-block-start: 5rem;
   background-color: rgb(255, 255, 239);
 }
 </style>
