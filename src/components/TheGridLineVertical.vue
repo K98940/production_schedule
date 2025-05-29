@@ -35,8 +35,6 @@ const widthStroke = 2
 <style>
 .svg-grid-line {
   position: absolute;
-  /* border: 1px solid rgb(87, 34, 194); */
-  /* border-radius: 10px; */
   pointer-events: none;
   user-select: none;
 }

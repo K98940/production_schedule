@@ -59,7 +59,6 @@ window.addEventListener('resize', () => {
     calendar.setDateStart('2025-05-26')
     calendar.grid = calendar.getGridData
     console.log('resize')
-    // location.reload()
   }, 1000)
 })
 

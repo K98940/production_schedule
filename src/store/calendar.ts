@@ -39,9 +39,9 @@ export const useCalendarStore = defineStore('calendar', {
       return intervals
     },
     getGridData(state) {
-      this.contextCoord = state.nodeContext.getBoundingClientRect()
+      state.contextCoord = state.nodeContext?.getBoundingClientRect()
       const hours: number[] = this.getSequenceHours
-      state.columnWidth = state.contextCoord.width / hours.length
+      state.columnWidth = state.contextCoord?.width / hours.length
 
       return hours.map((h, index) => {
         const d = new Date(h)
@@ -54,7 +54,7 @@ export const useCalendarStore = defineStore('calendar', {
     },
     pixelsPerMinute(state) {
       return state.countMiliseconds
-        ? state.contextCoord.width / (state.countMiliseconds / 1000 / 60)
+        ? state.contextCoord?.width / (state.countMiliseconds / 1000 / 60)
         : 0
     },
   },
