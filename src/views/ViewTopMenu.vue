@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { handleChangeDateRange } from '@/handlers/handleChangeDateRange'
 import { useCalendarStore } from '@/store/calendar'
+import { useCommonStore } from '@/store/common'
 import { DatePicker } from 'primevue'
 import { computed } from 'vue'
 
 const calendar = useCalendarStore()
+const common = useCommonStore()
+
 const dates = computed({
   get: () => [calendar.dateStart, calendar.dateFinish],
   set: (newDates) => {
@@ -15,7 +18,6 @@ const dates = computed({
   },
 })
 </script>
-
 <template>
   <header class="pb-3">
     <div class="flex justify-end">
@@ -26,6 +28,8 @@ const dates = computed({
         dateFormat="dd.mm.yy"
       />
     </div>
-    <!-- <p class="text-right text-s">Дата: {{ calendar.dateStart }} - {{ calendar.dateFinish }}</p> -->
+    <p class="text-right text-s">
+      Устройство: {{ common.selectedDevice }}, columnWidth {{ Math.round(calendar.columnWidth) }}
+    </p>
   </header>
 </template>
