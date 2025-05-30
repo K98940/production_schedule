@@ -21,8 +21,8 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="calendar-container scroll grow">
-    <div class="relative board" ref="contextCalendar">
+  <div class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto">
+    <div class="relative shrink-0" ref="contextCalendar">
       <TheGridLineVertical
         v-for="line in calendar.grid"
         :key="line.text"
@@ -56,15 +56,6 @@ onMounted(() => {
   </div>
 </template>
 <style>
-.calendar-container {
-  border: 4px solid grey;
-  border-radius: 5px;
-  overflow: auto;
-}
-.board {
-  height: 100%;
-}
-
 p {
   user-select: none;
 }

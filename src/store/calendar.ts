@@ -1,5 +1,6 @@
-import { widthCalendarColumn } from '@/constants/constants'
+import { heightCalendarRow, heightCalendarTitle, widthCalendarColumn } from '@/constants/constants'
 import { defineStore } from 'pinia'
+import { useDataStore } from './data'
 
 export type CalendarGridData = {
   x1: number
@@ -44,10 +45,13 @@ export const useCalendarStore = defineStore('calendar', {
       return intervals
     },
     getGridData(state): CalendarGridData[] {
+      const data = useDataStore()
       const hours: number[] = this.getSequenceHours
+
       if (state.nodeContext) {
         state.contextCoord = state.nodeContext.getBoundingClientRect()
         state.columnWidth = state.contextCoord.width / hours.length
+        state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
         if (state.columnWidth < 30) {
           state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
           state.contextCoord = state.nodeContext?.getBoundingClientRect()

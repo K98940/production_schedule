@@ -10,7 +10,7 @@ const widthStroke = 2
 <template>
   <slot></slot>
   <svg
-    class="svg-grid-line"
+    class="svg-grid-line-hz"
     :style="`transform: translate(${widthStroke}px, ${y1}px); height: ${widthStroke}px); width: calc(100% - ${widthStroke}px)`"
   >
     <g>
@@ -26,7 +26,7 @@ const widthStroke = 2
   </svg>
 </template>
 <style>
-.svg-grid-line {
+.svg-grid-line-hz {
   position: absolute;
   pointer-events: none;
   user-select: none;

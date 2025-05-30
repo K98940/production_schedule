@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useCalendarStore } from './calendar'
 
 export type Task = {
@@ -31,5 +31,14 @@ export const useDataStore = defineStore('data', () => {
     })
   }
 
-  return { tasks, calculateCoord }
+  /**Геттер, возвращает массив из ID устройств (станков и т.п.) пришедших в задачах */
+  const devices = computed(() => {
+    const devicesSet = new Set()
+    tasks.value.forEach((device) => {
+      devicesSet.add(device[0].deviceID)
+    })
+    return Array.from(devicesSet)
+  })
+
+  return { tasks, calculateCoord, devices }
 })
