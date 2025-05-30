@@ -1,4 +1,4 @@
-import { widthColumnContainer } from '@/constants/constants'
+import { widthCalendarColumn } from '@/constants/constants'
 import { defineStore } from 'pinia'
 
 export const useCalendarStore = defineStore('calendar', {
@@ -43,9 +43,12 @@ export const useCalendarStore = defineStore('calendar', {
       state.contextCoord = state.nodeContext?.getBoundingClientRect()
       state.columnWidth = state.contextCoord?.width / hours.length
       if (state.columnWidth < 30) {
-        state.nodeContext.style.width = `${widthColumnContainer * hours.length}px`
+        state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
+        state.nodeContext.style.overflow = 'auto'
         state.contextCoord = state.nodeContext?.getBoundingClientRect()
         state.columnWidth = state.contextCoord?.width / hours.length
+      } else {
+        state.nodeContext.style.overflow = 'hidden'
       }
 
       return hours.map((h, index) => {
@@ -79,10 +82,7 @@ export const useCalendarStore = defineStore('calendar', {
       this.countMiliseconds = this.intervalFinish - this.intervalStart
     },
     getX(time: number) {
-      const zeroCoordX = widthColumnContainer / 2
-      // const pixelsPerMinute = this.countMiliseconds
-      //   ? this.contextCoord.width / (this.countMiliseconds / 1000 / 60)
-      //   : 0
+      const zeroCoordX = widthCalendarColumn / 2
       const differentMsec = time - this.intervalStart
       const differenteMinutes = differentMsec / 1000 / 60
       const shiftX = differenteMinutes * this.pixelsPerMinute
