@@ -50,11 +50,8 @@ export const useCalendarStore = defineStore('calendar', {
         state.columnWidth = state.contextCoord.width / hours.length
         if (state.columnWidth < 30) {
           state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
-          state.nodeContext.style.overflow = 'auto'
           state.contextCoord = state.nodeContext?.getBoundingClientRect()
           state.columnWidth = state.contextCoord?.width / hours.length
-        } else {
-          state.nodeContext.style.overflow = 'hidden'
         }
       }
 

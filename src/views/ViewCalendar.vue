@@ -21,7 +21,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="calendar-container scroll">
+  <div class="calendar-container scroll grow">
     <div class="relative board" ref="contextCalendar">
       <TheGridLineVertical
         v-for="line in calendar.grid"
@@ -62,7 +62,7 @@ onMounted(() => {
   overflow: auto;
 }
 .board {
-  height: 50dvh;
+  height: 100%;
 }
 
 p {

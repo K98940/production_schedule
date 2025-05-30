@@ -7,7 +7,7 @@ import { handleMouseMove } from './handlers/handleMouseMove'
 
 <template>
   <div
-    class="app-container"
+    class="flex grow flex-col h-full p-4 bg-amber-50"
     @mouseup="handleMouseUp"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseUp"
@@ -16,13 +16,3 @@ import { handleMouseMove } from './handlers/handleMouseMove'
     <ViewCalendar />
   </div>
 </template>
-
-<style>
-.app-container {
-  height: 100dvh;
-  overflow: hidden;
-  padding-inline: 1rem;
-  padding-block-start: 4rem;
-  background-color: rgb(255, 255, 239);
-}
-</style>
