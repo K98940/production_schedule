@@ -5,3 +5,5 @@ export const widthCalendarColumn = 20
 export const heightCalendarRow = 80
 /**Высота шапки в календаре */
 export const heightCalendarTitle = 30
+/**Ширина левой панели в календаре (с названиями устройств, станков…) */
+export const widthCalendarAside = 100

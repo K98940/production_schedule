@@ -1,4 +1,9 @@
-import { heightCalendarRow, heightCalendarTitle, widthCalendarColumn } from '@/constants/constants'
+import {
+  heightCalendarRow,
+  heightCalendarTitle,
+  widthCalendarAside,
+  widthCalendarColumn,
+} from '@/constants/constants'
 import { defineStore } from 'pinia'
 import { useDataStore } from './data'
 
@@ -18,7 +23,9 @@ export const useCalendarStore = defineStore('calendar', {
     workTimeFinish: '17:00' as string,
     nodeContext: null as HTMLDivElement | null,
     contextCoord: null as unknown as DOMRect,
+    contextWidth: undefined as undefined | number,
     columnWidth: undefined as undefined | number,
+    hours: [] as number[],
     grid: null as null | CalendarGridData[],
   }),
   getters: {
@@ -46,24 +53,26 @@ export const useCalendarStore = defineStore('calendar', {
     },
     getGridData(state): CalendarGridData[] {
       const data = useDataStore()
-      const hours: number[] = this.getSequenceHours
+      state.hours = this.getSequenceHours
 
       if (state.nodeContext) {
         state.contextCoord = state.nodeContext.getBoundingClientRect()
-        state.columnWidth = state.contextCoord.width / hours.length
+        state.contextWidth = state.contextCoord.width
+        state.columnWidth =
+          (state.contextCoord.width - widthCalendarAside - 37) / state.hours.length
         state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
         if (state.columnWidth < 30) {
-          state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
+          state.nodeContext.style.width = `${widthCalendarColumn * state.hours.length}px`
           state.contextCoord = state.nodeContext?.getBoundingClientRect()
-          state.columnWidth = state.contextCoord?.width / hours.length
+          state.columnWidth = state.contextCoord?.width / state.hours.length
         }
       }
 
-      return hours.map((h, index) => {
+      return state.hours.map((h, index) => {
         const d = new Date(h)
         const hour = d.getHours()
         return {
-          x1: index * (state.columnWidth || 0),
+          x1: index * (state.columnWidth || 0) + widthCalendarAside,
           text: `${hour}`,
         }
       })
