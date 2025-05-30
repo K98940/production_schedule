@@ -8,6 +8,7 @@ import App from './App.vue'
 import { DialogService, ToastService, ConfirmationService } from 'primevue'
 import { useCalendarStore } from './store/calendar'
 import { useDataStore } from './store/data'
+import { handleChangeDateRange } from './handlers/handleChangeDateRange'
 
 let debounceTimer = null
 
@@ -127,5 +128,7 @@ window.addEventListener('DOMContentLoaded', () => {
       title: 'task-4',
     },
   ]
-  data.calculateCoord()
+  calendar.setDateStart('2025-05-28')
+  calendar.setDateFinish('2025-05-28')
+  handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
 })

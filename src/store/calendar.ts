@@ -3,8 +3,8 @@ import { defineStore } from 'pinia'
 
 export const useCalendarStore = defineStore('calendar', {
   state: () => ({
-    dateStart: new Date() as Date,
-    dateFinish: new Date() as Date,
+    dateStart: null as Date,
+    dateFinish: null as Date,
     intervalStart: null as null | number,
     intervalFinish: null as null | number,
     countMiliseconds: 0,
@@ -39,9 +39,14 @@ export const useCalendarStore = defineStore('calendar', {
       return intervals
     },
     getGridData(state) {
-      state.contextCoord = state.nodeContext?.getBoundingClientRect()
       const hours: number[] = this.getSequenceHours
+      state.contextCoord = state.nodeContext?.getBoundingClientRect()
       state.columnWidth = state.contextCoord?.width / hours.length
+      if (state.columnWidth < 30) {
+        state.nodeContext.style.width = `${widthColumnContainer * hours.length}px`
+        state.contextCoord = state.nodeContext?.getBoundingClientRect()
+        state.columnWidth = state.contextCoord?.width / hours.length
+      }
 
       return hours.map((h, index) => {
         const d = new Date(h)

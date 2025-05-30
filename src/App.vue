@@ -20,8 +20,9 @@ import { handleMouseMove } from './handlers/handleMouseMove'
 <style>
 .app-container {
   height: 100dvh;
+  overflow: hidden;
   padding-inline: 1rem;
-  padding-block-start: 5rem;
+  padding-block-start: 4rem;
   background-color: rgb(255, 255, 239);
 }
 </style>

@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import { handleChangeDateRange } from '@/handlers/handleChangeDateRange'
+import { useCalendarStore } from '@/store/calendar'
 import { DatePicker } from 'primevue'
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 
-const dates = ref<Date[]>()
-watch(dates, () => handleChangeDateRange(dates))
+const calendar = useCalendarStore()
+const dates = computed({
+  get: () => [calendar.dateStart, calendar.dateFinish],
+  set: (newDates) => {
+    if (!newDates[1]) return
+    calendar.dateStart = newDates[0]
+    calendar.dateFinish = newDates[1]
+    handleChangeDateRange(dates.value)
+  },
+})
 </script>
+
 <template>
   <header class="pb-3">
     <div class="flex justify-end">
@@ -16,6 +26,6 @@ watch(dates, () => handleChangeDateRange(dates))
         dateFormat="dd.mm.yy"
       />
     </div>
-    <p class="text-right">Дата: {{ dates }}</p>
+    <!-- <p class="text-right text-s">Дата: {{ calendar.dateStart }} - {{ calendar.dateFinish }}</p> -->
   </header>
 </template>
