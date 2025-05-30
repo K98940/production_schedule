@@ -7,15 +7,16 @@ export const handleMouseMove = (e: MouseEvent) => {
 
   if (common.indexActiveElement == -1) return
 
-  const targetElement = data.tasks[common.indexActiveElement]
   let newCoordX = e.clientX - common.startX
 
   const borderWidth = 4
-  const leftElement = data.tasks[common.indexActiveElement - 1] || null
-  const rightElement = data.tasks[common.indexActiveElement + 1] || null
+  const leftElement = data.tasks[common.selectedDevice][common.indexActiveElement - 1] || null
+  const rightElement = data.tasks[common.selectedDevice][common.indexActiveElement + 1] || null
   const leftBoundary = leftElement ? leftElement.coordX + leftElement.width + borderWidth : -9999
   const rightBoundary = rightElement
-    ? rightElement.coordX - targetElement.width - borderWidth
+    ? rightElement.coordX -
+      data.tasks[common.selectedDevice][common.indexActiveElement].width -
+      borderWidth
     : 9999
 
   if (newCoordX < leftBoundary) {
@@ -25,8 +26,8 @@ export const handleMouseMove = (e: MouseEvent) => {
     newCoordX = rightBoundary - 1
   }
 
-  data.tasks[common.indexActiveElement] = {
-    ...data.tasks[common.indexActiveElement],
+  data.tasks[common.selectedDevice][common.indexActiveElement] = {
+    ...data.tasks[common.selectedDevice][common.indexActiveElement],
     coordX: newCoordX,
   }
 }
