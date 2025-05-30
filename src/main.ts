@@ -11,7 +11,7 @@ import { useDataStore } from './store/data'
 import { handleChangeDateRange } from './handlers/handleChangeDateRange'
 import { heightCalendarRow, heightCalendarTitle } from './constants/constants'
 
-let debounceTimer = null
+let debounceTimer = 0
 
 const app = createApp(App)
 app

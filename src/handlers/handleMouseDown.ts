@@ -1,4 +1,4 @@
-import { MouseDownProps } from '@/components/TheElement.vue'
+import type { MouseDownProps } from '@/components/TheElement.vue'
 import { useCommonStore } from '@/store/common'
 
 export const handleMouseDown = ({ startX, startY, indexDevice, indexTask }: MouseDownProps) => {

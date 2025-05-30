@@ -1,19 +1,24 @@
 import { widthCalendarColumn } from '@/constants/constants'
 import { defineStore } from 'pinia'
 
+export type CalendarGridData = {
+  x1: number
+  text: string
+}
+
 export const useCalendarStore = defineStore('calendar', {
   state: () => ({
-    dateStart: null as Date,
-    dateFinish: null as Date,
+    dateStart: null as unknown as Date,
+    dateFinish: null as unknown as Date,
     intervalStart: null as null | number,
     intervalFinish: null as null | number,
     countMiliseconds: 0,
     workTimeStart: '08:00' as string,
     workTimeFinish: '17:00' as string,
     nodeContext: null as HTMLDivElement | null,
-    contextCoord: null as DOMRect,
-    columnWidth: 0,
-    grid: null,
+    contextCoord: null as unknown as DOMRect,
+    columnWidth: undefined as undefined | number,
+    grid: null as null | CalendarGridData[],
   }),
   getters: {
     dateStartISO(state) {
@@ -38,24 +43,26 @@ export const useCalendarStore = defineStore('calendar', {
       }
       return intervals
     },
-    getGridData(state) {
+    getGridData(state): CalendarGridData[] {
       const hours: number[] = this.getSequenceHours
-      state.contextCoord = state.nodeContext?.getBoundingClientRect()
-      state.columnWidth = state.contextCoord?.width / hours.length
-      if (state.columnWidth < 30) {
-        state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
-        state.nodeContext.style.overflow = 'auto'
-        state.contextCoord = state.nodeContext?.getBoundingClientRect()
-        state.columnWidth = state.contextCoord?.width / hours.length
-      } else {
-        state.nodeContext.style.overflow = 'hidden'
+      if (state.nodeContext) {
+        state.contextCoord = state.nodeContext.getBoundingClientRect()
+        state.columnWidth = state.contextCoord.width / hours.length
+        if (state.columnWidth < 30) {
+          state.nodeContext.style.width = `${widthCalendarColumn * hours.length}px`
+          state.nodeContext.style.overflow = 'auto'
+          state.contextCoord = state.nodeContext?.getBoundingClientRect()
+          state.columnWidth = state.contextCoord?.width / hours.length
+        } else {
+          state.nodeContext.style.overflow = 'hidden'
+        }
       }
 
       return hours.map((h, index) => {
         const d = new Date(h)
         const hour = d.getHours()
         return {
-          x1: index * state.columnWidth,
+          x1: index * (state.columnWidth || 0),
           text: `${hour}`,
         }
       })
@@ -69,21 +76,21 @@ export const useCalendarStore = defineStore('calendar', {
   actions: {
     setDateStart(date: string) {
       this.dateStart = new Date(date)
-      this.intervalStart = new Date(date)
-      this.intervalStart.setHours(0, 0, 0, 0)
-      this.intervalStart = this.intervalStart.getTime()
-      this.countMiliseconds = this.intervalFinish - this.intervalStart
+      const start = new Date(date)
+      start.setHours(0, 0, 0, 0)
+      this.intervalStart = start.getTime()
+      this.countMiliseconds = (this.intervalFinish || 0) - this.intervalStart
     },
     setDateFinish(date: string) {
       this.dateFinish = new Date(date)
-      this.intervalFinish = new Date(date)
-      this.intervalFinish.setHours(24, 0, 0, 0)
-      this.intervalFinish = this.intervalFinish.getTime()
-      this.countMiliseconds = this.intervalFinish - this.intervalStart
+      const finish = new Date(date)
+      finish.setHours(24, 0, 0, 0)
+      this.intervalFinish = finish.getTime()
+      this.countMiliseconds = this.intervalFinish - (this.intervalStart || 0)
     },
     getX(time: number) {
       const zeroCoordX = widthCalendarColumn / 2
-      const differentMsec = time - this.intervalStart
+      const differentMsec = time - (this.intervalStart || 0)
       const differenteMinutes = differentMsec / 1000 / 60
       const shiftX = differenteMinutes * this.pixelsPerMinute
       const result = zeroCoordX + shiftX

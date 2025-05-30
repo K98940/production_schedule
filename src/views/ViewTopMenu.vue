@@ -29,7 +29,8 @@ const dates = computed({
       />
     </div>
     <p class="text-right text-s">
-      Устройство: {{ common.selectedDevice }}, columnWidth {{ Math.round(calendar.columnWidth) }}
+      Устройство: {{ common.selectedDevice }}, columnWidth
+      {{ Math.round(calendar.columnWidth || 0) }}
     </p>
   </header>
 </template>
