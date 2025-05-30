@@ -1,11 +1,12 @@
+import { MouseDownProps } from '@/components/TheElement.vue'
 import { useCommonStore } from '@/store/common'
-import { useDataStore } from '@/store/data'
 
-export const handleMouseDown = (id, x, y) => {
+export const handleMouseDown = ({ startX, startY, indexDevice, indexTask }: MouseDownProps) => {
   const common = useCommonStore()
-  const data = useDataStore()
 
-  common.indexActiveElement = data.tasks.findIndex((el) => el.id == id)
-  common.startX = x
-  common.startY = y
+  common.startX = startX
+  common.startY = startY
+
+  common.selectedDevice = indexDevice
+  common.indexActiveElement = indexTask
 }
