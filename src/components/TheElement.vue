@@ -1,6 +1,8 @@
 <script setup lang="ts">
 defineProps<{
   id: number
+  indexDevice: number
+  indexTask: number
   coordX: number
   coordY: number
   width: number
@@ -8,9 +10,16 @@ defineProps<{
   title: string
 }>()
 
+export type MouseDownProps = {
+  startX: number
+  startY: number
+  indexDevice: number
+  indexTask: number
+}
+
 const borderWidth = 4
 const emit = defineEmits<{
-  (ev: 'down', id: number, startX: number, startY: number): void
+  (ev: 'down', props: MouseDownProps): void
   (ev: 'up', e: MouseEvent): void
   (ev: 'move', e: MouseEvent): void
 }>()
@@ -20,7 +29,15 @@ const emit = defineEmits<{
   <svg
     class="svg"
     :style="`transform: translate(${coordX}px, ${coordY}px); height: ${height + borderWidth}px; width: ${width + borderWidth}px`"
-    @mousedown="(e) => emit('down', id, e.clientX - coordX, e.clientY - coordY)"
+    @mousedown="
+      (e) =>
+        emit('down', {
+          startX: e.clientX - coordX,
+          startY: e.clientY - coordY,
+          indexDevice,
+          indexTask,
+        })
+    "
     @mouseup="(e) => emit('up', e)"
     @mousemove="(e) => emit('move', e)"
   >
