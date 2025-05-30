@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { widthColumnContainer } from '@/constants/constants'
+import { widthCalendarColumn } from '@/constants/constants'
 
 defineProps<{
   x1: number
@@ -16,18 +16,18 @@ const widthStroke = 2
 <template>
   <svg
     class="svg-grid-line"
-    :style="`transform: translate(${x1}px, 0px); height: calc(100% - ${borderWidth}px); width: ${widthColumnContainer}px`"
+    :style="`transform: translate(${x1}px, 0px); height: calc(100% - ${borderWidth}px); width: ${widthCalendarColumn}px`"
   >
     <g>
       <line
-        :x1="widthColumnContainer / 2"
+        :x1="widthCalendarColumn / 2"
         :y1="topPadding"
-        :x2="widthColumnContainer / 2"
+        :x2="widthCalendarColumn / 2"
         y2="100%"
         :stroke="text == '0' ? colorDark : colorLight"
         :stroke-width="widthStroke"
       />
-      <text :x="widthColumnContainer / 2" :y="topPadding / 1.5" font-size="12" text-anchor="middle">
+      <text :x="widthCalendarColumn / 2" :y="topPadding / 1.5" font-size="12" text-anchor="middle">
         {{ text }}
       </text>
     </g>
