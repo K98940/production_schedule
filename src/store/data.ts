@@ -13,17 +13,21 @@ export type Task = {
   width: number
   height: number
   title: string
+  deviceID: string
 }
 
 export const useDataStore = defineStore('data', () => {
-  const tasks = ref<Task[]>([])
+  /**Все полученные задачи */
+  const tasks = ref<Task[][]>([])
 
   const calculateCoord = () => {
     const calendar = useCalendarStore()
 
-    tasks.value.forEach((t) => {
-      t.coordX = calendar.getX(new Date(t.dateStartISO).getTime())
-      t.width = calendar.getWidth(t.duration)
+    tasks.value.forEach((device) => {
+      device.forEach((task) => {
+        task.coordX = calendar.getX(new Date(task.dateStartISO).getTime())
+        task.width = calendar.getWidth(task.duration)
+      })
     })
   }
 

@@ -9,6 +9,7 @@ import { DialogService, ToastService, ConfirmationService } from 'primevue'
 import { useCalendarStore } from './store/calendar'
 import { useDataStore } from './store/data'
 import { handleChangeDateRange } from './handlers/handleChangeDateRange'
+import { heightCalendarRow, heightCalendarTitle } from './constants/constants'
 
 let debounceTimer = null
 
@@ -67,68 +68,124 @@ window.addEventListener('DOMContentLoaded', () => {
   const calendar = useCalendarStore()
   const data = useDataStore()
 
-  calendar.setDateStart('2025-05-28')
-  calendar.setDateFinish('2025-05-28')
+  const prefixDate = '2025-05-30T'
+  const suffixDate = ':00:00.000'
+  calendar.setDateStart(prefixDate.replace('T', ''))
+  calendar.setDateFinish(prefixDate.replace('T', ''))
 
   data.tasks = [
-    {
-      id: 1,
-      dateStartISO: '2025-05-27T20:00:00.000',
-      dateEndISO: '2025-05-28T10:00:00.000',
-      duration:
-        new Date('2025-05-28T10:00:00.000').getTime() -
-        new Date('2025-05-27T20:00:00.000').getTime(),
-      coordX: 0,
-      coordY: 80,
-      nextId: 0,
-      width: 0,
-      height: 100,
-      title: 'task-1',
-    },
-    {
-      id: 2,
-      dateStartISO: '2025-05-28T11:30:00.000',
-      dateEndISO: '2025-05-28T14:00:00.000',
-      duration:
-        new Date('2025-05-28T14:00:00.000').getTime() -
-        new Date('2025-05-28T11:30:00.000').getTime(),
-      coordX: 0,
-      coordY: 80,
-      nextId: 3,
-      width: 0,
-      height: 100,
-      title: 'task-2',
-    },
-    {
-      id: 3,
-      dateStartISO: '2025-05-28T15:00:00.000',
-      dateEndISO: '2025-05-28T17:00:00.000',
-      duration:
-        new Date('2025-05-28T17:00:00.000').getTime() -
-        new Date('2025-05-28T15:00:00.000').getTime(),
-      coordX: 0,
-      coordY: 80,
-      nextId: 0,
-      width: 0,
-      height: 100,
-      title: 'task-3',
-    },
-    {
-      id: 4,
-      dateStartISO: '2025-05-28T18:00:00.000',
-      dateEndISO: '2025-05-28T20:00:00.000',
-      duration:
-        new Date('2025-05-28T20:00:00.000').getTime() -
-        new Date('2025-05-28T18:00:00.000').getTime(),
-      coordX: 0,
-      coordY: 80,
-      nextId: 0,
-      width: 0,
-      height: 100,
-      title: 'task-4',
-    },
+    [
+      {
+        id: 1,
+        dateStartISO: `${prefixDate}10${suffixDate}`,
+        dateEndISO: `${prefixDate}15${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}15${suffixDate}`).getTime() -
+          new Date(`${prefixDate}10${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-1',
+        deviceID: '1',
+      },
+      {
+        id: 2,
+        dateStartISO: `${prefixDate}17${suffixDate}`,
+        dateEndISO: `${prefixDate}19${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}19${suffixDate}`).getTime() -
+          new Date(`${prefixDate}17${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle,
+        nextId: 3,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-2',
+        deviceID: '1',
+      },
+    ],
+    [
+      {
+        id: 3,
+        dateStartISO: `${prefixDate}11${suffixDate}`,
+        dateEndISO: `${prefixDate}13${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}13${suffixDate}`).getTime() -
+          new Date(`${prefixDate}11${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-3',
+        deviceID: '2',
+      },
+      {
+        id: 4,
+        dateStartISO: `${prefixDate}20${suffixDate}`,
+        dateEndISO: `${prefixDate}23${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}23${suffixDate}`).getTime() -
+          new Date(`${prefixDate}20${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-4',
+        deviceID: '2',
+      },
+    ],
+    [
+      {
+        id: 5,
+        dateStartISO: `${prefixDate}03${suffixDate}`,
+        dateEndISO: `${prefixDate}04${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}04${suffixDate}`).getTime() -
+          new Date(`${prefixDate}03${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-5',
+        deviceID: '3',
+      },
+      {
+        id: 6,
+        dateStartISO: `${prefixDate}08${suffixDate}`,
+        dateEndISO: `${prefixDate}11${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}11${suffixDate}`).getTime() -
+          new Date(`${prefixDate}08${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-5',
+        deviceID: '3',
+      },
+      {
+        id: 7,
+        dateStartISO: `${prefixDate}14${suffixDate}`,
+        dateEndISO: `${prefixDate}17${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}17${suffixDate}`).getTime() -
+          new Date(`${prefixDate}14${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-5',
+        deviceID: '3',
+      },
+    ],
   ]
-  calendar.setDateStart('2025-05-28')
-  calendar.setDateFinish('2025-05-28')
+
   handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
 })
