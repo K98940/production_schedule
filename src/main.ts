@@ -58,8 +58,7 @@ window.addEventListener('resize', () => {
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => {
     const calendar = useCalendarStore()
-    calendar.setDateStart('2025-05-26')
-    calendar.grid = calendar.getGridData
+    handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
     console.log('resize')
   }, 1000)
 })
