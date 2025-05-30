@@ -14,5 +14,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: '/webhook/bananapark/calendar-holidays/',
+  base: '/v2/',
 })
