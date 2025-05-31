@@ -42,7 +42,14 @@ const emit = defineEmits<{
     @mousemove="(e) => emit('move', e)"
   >
     <g>
-      <rect :width="`${width}px`" :height="`${height}px`" x="1" y="1" fill="red" rx="10" />
+      <rect
+        :width="`${width}px`"
+        :height="`${height}px`"
+        x="1"
+        y="1"
+        fill="oklch(59.6% 0.145 163.225)"
+        rx="10"
+      />
       <text x="10px" y="20px" font-size="14" fill="white" font-weight="bolder" text-anchor="start">
         {{ title }}
       </text>
