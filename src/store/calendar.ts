@@ -75,7 +75,7 @@ export const useCalendarStore = defineStore('calendar', {
         const hour = d.getHours()
         return {
           x1: index * (state.columnWidth || 0) + widthCalendarAside,
-          text: `${hour}`,
+          text: `${hour}`.padStart(2, '0'),
         }
       })
     },
