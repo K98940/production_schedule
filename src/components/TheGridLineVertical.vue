@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { widthStroke } from '@/constants/constants'
+import { widthStroke, workTime } from '@/constants/constants'
 import { useCalendarStore } from '@/store/calendar'
 
 defineProps<{
@@ -12,11 +12,15 @@ const topPadding = 30
 const borderWidth = 0
 const colorDark = 'rgba(200, 200, 200, 1)'
 const colorLight = 'rgba(200, 200, 200, 0.25)'
+const calcBgColor = (time: string): string => {
+  const isWorkTime = workTime.includes(time)
+  return isWorkTime ? 'bg-emerald-50' : 'bg-stone-200'
+}
 </script>
 
 <template>
   <svg
-    class="svg-grid-line"
+    :class="`svg-grid-line ${calcBgColor(text)}`"
     :style="`transform: translate(${x1}px, 0px); height: calc(100% - ${borderWidth}px); width: ${calendar.columnWidth || 0}px`"
   >
     <g>
