@@ -1,9 +1,8 @@
-/**Ширина контейнера SVG элемента, в котором рисуется вертикальная линия грида календаря
- * с числовым обозначением часа сверху линии */
-export const widthCalendarColumn = 20
 /**Высота строки в календаре, а так же высота карточки задания в календаре */
 export const heightCalendarRow = 80
 /**Высота шапки в календаре */
 export const heightCalendarTitle = 30
 /**Ширина левой панели в календаре (с названиями устройств, станков…) */
 export const widthCalendarAside = 100
+/**Ширина линии таблицы (SVG элемента)  */
+export const widthStroke = 2

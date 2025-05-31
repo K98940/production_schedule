@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { widthCalendarColumn } from '@/constants/constants'
+import { widthStroke } from '@/constants/constants'
+import { useCalendarStore } from '@/store/calendar'
 
 defineProps<{
   x1: number
   text: string
 }>()
 
+const calendar = useCalendarStore()
 const topPadding = 30
 const borderWidth = 0
 const colorDark = 'rgba(200, 200, 200, 1)'
 const colorLight = 'rgba(200, 200, 200, 0.25)'
-const widthStroke = 2
 </script>
 
 <template>
   <svg
     class="svg-grid-line"
-    :style="`transform: translate(${x1}px, 0px); height: calc(100% - ${borderWidth}px); width: ${widthCalendarColumn}px`"
+    :style="`transform: translate(${x1}px, 0px); height: calc(100% - ${borderWidth}px); width: ${calendar.columnWidth || 0}px`"
   >
     <g>
       <line
-        :x1="widthCalendarColumn / 2"
+        :x1="widthStroke"
         :y1="topPadding"
-        :x2="widthCalendarColumn / 2"
         y2="100%"
         :stroke="text == '0' ? colorDark : colorLight"
         :stroke-width="widthStroke"
       />
-      <text :x="widthCalendarColumn / 2" :y="topPadding / 1.5" font-size="12" text-anchor="middle">
+      <text :x="(calendar.columnWidth || 0) / 2" :y="topPadding / 1.5" font-size="12">
         {{ text }}
       </text>
     </g>

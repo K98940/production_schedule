@@ -2,7 +2,7 @@ import {
   heightCalendarRow,
   heightCalendarTitle,
   widthCalendarAside,
-  widthCalendarColumn,
+  widthStroke,
 } from '@/constants/constants'
 import { defineStore } from 'pinia'
 import { useDataStore } from './data'
@@ -58,11 +58,11 @@ export const useCalendarStore = defineStore('calendar', {
       if (state.nodeContext) {
         state.contextCoord = state.nodeContext.getBoundingClientRect()
         state.contextWidth = state.contextCoord.width
-        state.columnWidth =
-          (state.contextCoord.width - widthCalendarAside - 37) / state.hours.length
+        state.columnWidth = (state.contextCoord.width - widthCalendarAside) / state.hours.length
         state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
+
         if (state.columnWidth < 30) {
-          state.nodeContext.style.width = `${widthCalendarColumn * state.hours.length}px`
+          state.nodeContext.style.width = `${state.columnWidth * state.hours.length}px`
           state.contextCoord = state.nodeContext?.getBoundingClientRect()
           state.columnWidth = state.contextCoord?.width / state.hours.length
         }
@@ -79,7 +79,7 @@ export const useCalendarStore = defineStore('calendar', {
     },
     pixelsPerMinute(state) {
       return state.countMiliseconds
-        ? state.contextCoord?.width / (state.countMiliseconds / 1000 / 60)
+        ? (state.contextCoord?.width - widthCalendarAside) / (state.countMiliseconds / 1000 / 60)
         : 0
     },
   },
@@ -99,16 +99,19 @@ export const useCalendarStore = defineStore('calendar', {
       this.countMiliseconds = this.intervalFinish - (this.intervalStart || 0)
     },
     getX(time: number) {
-      const zeroCoordX = widthCalendarColumn / 2
       const differentMsec = time - (this.intervalStart || 0)
+      /**Разница во времени между началом календаря и началом задачи в карточке */
       const differenteMinutes = differentMsec / 1000 / 60
+      /**Кол-во пикселей, на которое надо сдвинуть карточку по оси Х */
       const shiftX = differenteMinutes * this.pixelsPerMinute
-      const result = zeroCoordX + shiftX
+      /**Итоговое кол-во пикселей, на которое надо сдвинуть карточку по оси Х, с учетом
+       * поправки на ширину боковой панели*/
+      const result = widthCalendarAside + shiftX + widthStroke * 2
       return result
     },
     getWidth(duration: number): number {
       const durationMinutes = duration / 1000 / 60
-      return this.pixelsPerMinute * durationMinutes
+      return this.pixelsPerMinute * durationMinutes - widthStroke * 4
     },
   },
 })

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { widthCalendarAside } from '@/constants/constants'
+import { widthCalendarAside, widthStroke } from '@/constants/constants'
 import { useCalendarStore } from '@/store/calendar'
 
 defineProps<{
@@ -9,8 +9,6 @@ defineProps<{
 const calendar = useCalendarStore()
 
 const colorDark = 'rgba(200, 200, 200, 1)'
-const widthStroke = 2
-const widhScrollbar = 16
 </script>
 
 <template>
@@ -18,8 +16,8 @@ const widhScrollbar = 16
   <svg
     class="svg-grid-line-hz"
     :style="`transform: translate(${widthStroke}px, ${y1}px);
-     height: ${widthStroke}px);
-     width: ${(calendar.columnWidth || 0) * calendar.hours.length + widhScrollbar + widthCalendarAside}px`"
+     height: ${widthStroke}px;
+     width: ${(calendar.columnWidth || 0) * calendar.hours.length + widthCalendarAside}px`"
   >
     <g>
       <line
