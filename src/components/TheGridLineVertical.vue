@@ -10,7 +10,7 @@ defineProps<{
 const calendar = useCalendarStore()
 const topPadding = 30
 const borderWidth = 0
-const colorDark = 'rgba(200, 200, 200, 1)'
+const colorDark = 'rgba(180, 180, 180, 1)'
 const colorLight = 'rgba(200, 200, 200, 0.25)'
 const calcBgColor = (time: string): string => {
   const isWorkTime = workTime.includes(time)
@@ -28,7 +28,7 @@ const calcBgColor = (time: string): string => {
         :x1="widthStroke"
         :y1="topPadding"
         y2="100%"
-        :stroke="text == '0' ? colorDark : colorLight"
+        :stroke="text == '00' ? colorDark : colorLight"
         :stroke-width="widthStroke"
       />
       <text :x="(calendar.columnWidth || 0) / 2" :y="topPadding / 1.5" font-size="12">
