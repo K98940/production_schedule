@@ -113,7 +113,7 @@ export const useCalendarStore = defineStore('calendar', {
     },
     getWidth(duration: number): number {
       const durationMinutes = duration / 1000 / 60
-      return this.pixelsPerMinute * durationMinutes - widthStroke * 4
+      return this.pixelsPerMinute * durationMinutes
     },
   },
 })
