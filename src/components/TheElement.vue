@@ -42,7 +42,14 @@ const emit = defineEmits<{
     @mousemove="(e) => emit('move', e)"
   >
     <g>
-      <rect :width="`${width}px`" :height="`${height}px`" x="1" y="1" fill="red" rx="10" />
+      <rect
+        :width="`${width}px`"
+        :height="`${height}px`"
+        x="1"
+        y="1"
+        fill="oklch(59.6% 0.145 163.225)"
+        rx="10"
+      />
       <text x="10px" y="20px" font-size="14" fill="white" font-weight="bolder" text-anchor="start">
         {{ title }}
       </text>
@@ -53,7 +60,7 @@ const emit = defineEmits<{
 .svg {
   position: absolute;
   inset: 0;
-  border: 1px solid rgb(188, 29, 29);
+  border: 1px solid oklch(21% 0.034 264.665);
   border-radius: 10px;
   cursor: pointer;
   user-select: none;

@@ -9,6 +9,7 @@ import { handleMouseMove } from '@/handlers/handleMouseMove'
 import { handleMouseDown } from '@/handlers/handleMouseDown'
 import TheGridLineHorizontal from '@/components/TheGridLineHorizontal.vue'
 import { heightCalendarRow, heightCalendarTitle } from '@/constants/constants'
+import TheLeftSide from '@/components/TheLeftSide.vue'
 
 const calendar = useCalendarStore()
 const data = useDataStore()
@@ -21,8 +22,8 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="calendar-container scroll">
-    <div class="relative board" ref="contextCalendar">
+  <div class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto">
+    <div class="relative shrink-0" ref="contextCalendar">
       <TheGridLineVertical
         v-for="line in calendar.grid"
         :key="line.text"
@@ -52,19 +53,16 @@ onMounted(() => {
           @move="handleMouseMove"
         />
       </TheGridLineHorizontal>
+      <TheLeftSide
+        v-for="(device, indexDevice) in data.tasks"
+        :key="device[0].deviceID"
+        :index-device="indexDevice"
+        :title="device[0].deviceTitle"
+      />
     </div>
   </div>
 </template>
 <style>
-.calendar-container {
-  border: 4px solid grey;
-  border-radius: 5px;
-  overflow: auto;
-}
-.board {
-  height: 50dvh;
-}
-
 p {
   user-select: none;
 }

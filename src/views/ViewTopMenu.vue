@@ -26,6 +26,7 @@ const dates = computed({
         selectionMode="range"
         :manualInput="false"
         dateFormat="dd.mm.yy"
+        inputClass="!bg-purple-50"
       />
     </div>
     <p class="text-right text-s">

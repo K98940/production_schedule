@@ -58,8 +58,7 @@ window.addEventListener('resize', () => {
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => {
     const calendar = useCalendarStore()
-    calendar.setDateStart('2025-05-26')
-    calendar.grid = calendar.getGridData
+    handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
     console.log('resize')
   }, 1000)
 })
@@ -77,11 +76,11 @@ window.addEventListener('DOMContentLoaded', () => {
     [
       {
         id: 1,
-        dateStartISO: `${prefixDate}10${suffixDate}`,
+        dateStartISO: `${prefixDate}11${suffixDate}`,
         dateEndISO: `${prefixDate}15${suffixDate}`,
         duration:
           new Date(`${prefixDate}15${suffixDate}`).getTime() -
-          new Date(`${prefixDate}10${suffixDate}`).getTime(),
+          new Date(`${prefixDate}11${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle,
         nextId: 0,
@@ -89,6 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-1',
         deviceID: '1',
+        deviceTitle: 'НА 1',
       },
       {
         id: 2,
@@ -104,16 +104,17 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-2',
         deviceID: '1',
+        deviceTitle: 'НА 1',
       },
     ],
     [
       {
         id: 3,
-        dateStartISO: `${prefixDate}11${suffixDate}`,
-        dateEndISO: `${prefixDate}13${suffixDate}`,
+        dateStartISO: `${prefixDate}00${suffixDate}`,
+        dateEndISO: `${prefixDate}10${suffixDate}`,
         duration:
-          new Date(`${prefixDate}13${suffixDate}`).getTime() -
-          new Date(`${prefixDate}11${suffixDate}`).getTime(),
+          new Date(`${prefixDate}10${suffixDate}`).getTime() -
+          new Date(`${prefixDate}00${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle + heightCalendarRow,
         nextId: 0,
@@ -121,13 +122,14 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-3',
         deviceID: '2',
+        deviceTitle: 'НА 2',
       },
       {
         id: 4,
         dateStartISO: `${prefixDate}20${suffixDate}`,
-        dateEndISO: `${prefixDate}23${suffixDate}`,
+        dateEndISO: `${prefixDate}22${suffixDate}`,
         duration:
-          new Date(`${prefixDate}23${suffixDate}`).getTime() -
+          new Date(`${prefixDate}22${suffixDate}`).getTime() -
           new Date(`${prefixDate}20${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle + heightCalendarRow,
@@ -136,16 +138,17 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-4',
         deviceID: '2',
+        deviceTitle: 'НА 2',
       },
     ],
     [
       {
         id: 5,
-        dateStartISO: `${prefixDate}03${suffixDate}`,
-        dateEndISO: `${prefixDate}04${suffixDate}`,
+        dateStartISO: `${prefixDate}00${suffixDate}`,
+        dateEndISO: `${prefixDate}02${suffixDate}`,
         duration:
-          new Date(`${prefixDate}04${suffixDate}`).getTime() -
-          new Date(`${prefixDate}03${suffixDate}`).getTime(),
+          new Date(`${prefixDate}02${suffixDate}`).getTime() -
+          new Date(`${prefixDate}00${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle + heightCalendarRow * 2,
         nextId: 0,
@@ -153,6 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-5',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
       {
         id: 6,
@@ -166,8 +170,9 @@ window.addEventListener('DOMContentLoaded', () => {
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
-        title: 'task-5',
+        title: 'task-6',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
       {
         id: 7,
@@ -181,10 +186,152 @@ window.addEventListener('DOMContentLoaded', () => {
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
-        title: 'task-5',
+        title: 'task-7',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
     ],
+    [
+      {
+        id: 8,
+        dateStartISO: `${prefixDate}03${suffixDate}`,
+        dateEndISO: `${prefixDate}05${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}05${suffixDate}`).getTime() -
+          new Date(`${prefixDate}03${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 3,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-8',
+        deviceID: '4',
+        deviceTitle: 'РМС 2',
+      },
+    ],
+    [
+      {
+        id: 9,
+        dateStartISO: `${prefixDate}04${suffixDate}`,
+        dateEndISO: `${prefixDate}06${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}06${suffixDate}`).getTime() -
+          new Date(`${prefixDate}04${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 4,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-9',
+        deviceID: '5',
+        deviceTitle: 'РМС 3',
+      },
+    ],
+    [
+      {
+        id: 10,
+        dateStartISO: `${prefixDate}05${suffixDate}`,
+        dateEndISO: `${prefixDate}09${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}09${suffixDate}`).getTime() -
+          new Date(`${prefixDate}05${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 5,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-10',
+        deviceID: '6',
+        deviceTitle: 'РМС 4',
+      },
+    ],
+    [
+      {
+        id: 11,
+        dateStartISO: `${prefixDate}07${suffixDate}`,
+        dateEndISO: `${prefixDate}09${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}09${suffixDate}`).getTime() -
+          new Date(`${prefixDate}07${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 6,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-11',
+        deviceID: '7',
+        deviceTitle: 'РМС 5',
+      },
+    ],
+    [
+      {
+        id: 12,
+        dateStartISO: `${prefixDate}10${suffixDate}`,
+        dateEndISO: `${prefixDate}13${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}13${suffixDate}`).getTime() -
+          new Date(`${prefixDate}10${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 7,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'task-12',
+        deviceID: '8',
+        deviceTitle: 'Сушильная печь',
+      },
+    ],
+    // [
+    //   {
+    //     id: 13,
+    //     dateStartISO: `${prefixDate}12${suffixDate}`,
+    //     dateEndISO: `${prefixDate}14${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}14${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}12${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 8,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-13',
+    //     deviceID: '9',
+    //   },
+    // ],
+    // [
+    //   {
+    //     id: 14,
+    //     dateStartISO: `${prefixDate}15${suffixDate}`,
+    //     dateEndISO: `${prefixDate}18${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}18${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}15${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 9,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-14',
+    //     deviceID: '10',
+    //   },
+    // ],
+    // [
+    //   {
+    //     id: 15,
+    //     dateStartISO: `${prefixDate}16${suffixDate}`,
+    //     dateEndISO: `${prefixDate}19${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}19${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}16${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 10,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-15',
+    //     deviceID: '11',
+    //   },
+    // ],
   ]
 
   handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
