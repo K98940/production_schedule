@@ -9,6 +9,7 @@ import { handleMouseMove } from '@/handlers/handleMouseMove'
 import { handleMouseDown } from '@/handlers/handleMouseDown'
 import TheGridLineHorizontal from '@/components/TheGridLineHorizontal.vue'
 import { heightCalendarRow, heightCalendarTitle } from '@/constants/constants'
+import TheLeftSide from '@/components/TheLeftSide.vue'
 
 const calendar = useCalendarStore()
 const data = useDataStore()
@@ -52,6 +53,12 @@ onMounted(() => {
           @move="handleMouseMove"
         />
       </TheGridLineHorizontal>
+      <TheLeftSide
+        v-for="(device, indexDevice) in data.tasks"
+        :key="device[0].deviceID"
+        :index-device="indexDevice"
+        :title="device[0].deviceTitle"
+      />
     </div>
   </div>
 </template>

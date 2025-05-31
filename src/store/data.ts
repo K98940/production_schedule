@@ -14,6 +14,7 @@ export type Task = {
   height: number
   title: string
   deviceID: string
+  deviceTitle: string
 }
 
 export const useDataStore = defineStore('data', () => {

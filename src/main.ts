@@ -76,11 +76,11 @@ window.addEventListener('DOMContentLoaded', () => {
     [
       {
         id: 1,
-        dateStartISO: `${prefixDate}02${suffixDate}`,
+        dateStartISO: `${prefixDate}11${suffixDate}`,
         dateEndISO: `${prefixDate}15${suffixDate}`,
         duration:
           new Date(`${prefixDate}15${suffixDate}`).getTime() -
-          new Date(`${prefixDate}02${suffixDate}`).getTime(),
+          new Date(`${prefixDate}11${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle,
         nextId: 0,
@@ -88,6 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-1',
         deviceID: '1',
+        deviceTitle: 'НА 1',
       },
       {
         id: 2,
@@ -103,6 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-2',
         deviceID: '1',
+        deviceTitle: 'НА 1',
       },
     ],
     [
@@ -120,6 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-3',
         deviceID: '2',
+        deviceTitle: 'НА 2',
       },
       {
         id: 4,
@@ -135,6 +138,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-4',
         deviceID: '2',
+        deviceTitle: 'НА 2',
       },
     ],
     [
@@ -152,6 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-5',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
       {
         id: 6,
@@ -167,6 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-6',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
       {
         id: 7,
@@ -182,6 +188,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-7',
         deviceID: '3',
+        deviceTitle: 'РМС 1',
       },
     ],
     [
@@ -199,6 +206,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-8',
         deviceID: '4',
+        deviceTitle: 'РМС 2',
       },
     ],
     [
@@ -216,6 +224,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-9',
         deviceID: '5',
+        deviceTitle: 'РМС 3',
       },
     ],
     [
@@ -233,6 +242,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-10',
         deviceID: '6',
+        deviceTitle: 'РМС 4',
       },
     ],
     [
@@ -250,6 +260,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-11',
         deviceID: '7',
+        deviceTitle: 'РМС 5',
       },
     ],
     [
@@ -267,6 +278,7 @@ window.addEventListener('DOMContentLoaded', () => {
         height: heightCalendarRow - 4,
         title: 'task-12',
         deviceID: '8',
+        deviceTitle: 'Сушильная печь',
       },
     ],
     // [
