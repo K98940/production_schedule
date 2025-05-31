@@ -60,7 +60,7 @@ const emit = defineEmits<{
 .svg {
   position: absolute;
   inset: 0;
-  border: 1px solid rgb(188, 29, 29);
+  border: 1px solid oklch(21% 0.034 264.665);
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
