@@ -64,7 +64,7 @@ export const useCalendarStore = defineStore('calendar', {
         if (state.columnWidth < minWidthCalendarColumn) {
           state.nodeContext.style.width = `${minWidthCalendarColumn * state.hours.length + widthCalendarAside}px`
           state.contextCoord = state.nodeContext?.getBoundingClientRect()
-          state.columnWidth = state.contextCoord?.width / state.hours.length
+          state.columnWidth = (state.contextCoord.width - widthCalendarAside) / state.hours.length
         }
 
         state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
@@ -80,9 +80,7 @@ export const useCalendarStore = defineStore('calendar', {
       })
     },
     pixelsPerMinute(state) {
-      return state.countMiliseconds
-        ? (state.contextCoord?.width - widthCalendarAside) / (state.countMiliseconds / 1000 / 60)
-        : 0
+      return (state.contextCoord?.width - widthCalendarAside) / (state.countMiliseconds / 1000 / 60)
     },
   },
   actions: {
@@ -113,7 +111,7 @@ export const useCalendarStore = defineStore('calendar', {
     },
     getWidth(duration: number): number {
       const durationMinutes = duration / 1000 / 60
-      return this.pixelsPerMinute * durationMinutes
+      return this.pixelsPerMinute * durationMinutes - widthStroke * 2
     },
   },
 })

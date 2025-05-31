@@ -7,6 +7,6 @@ export const widthCalendarAside = 100
 /**Ширина линии таблицы (SVG элемента)  */
 export const widthStroke = 2
 /**Минимальная ширина колонки календаря (колонка отображающая 1 час) */
-export const minWidthCalendarColumn = 30
+export const minWidthCalendarColumn = 50
 /**Рабочие часы */
 export const workTime = ['08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18']

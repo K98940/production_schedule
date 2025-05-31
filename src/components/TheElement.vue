@@ -17,7 +17,6 @@ export type MouseDownProps = {
   indexTask: number
 }
 
-const borderWidth = 4
 const emit = defineEmits<{
   (ev: 'down', props: MouseDownProps): void
   (ev: 'up', e: MouseEvent): void
@@ -28,7 +27,7 @@ const emit = defineEmits<{
 <template>
   <svg
     class="svg"
-    :style="`transform: translate(${coordX}px, ${coordY}px); height: ${height + borderWidth}px; width: ${width + borderWidth}px`"
+    :style="`transform: translate(${coordX}px, ${coordY}px); height: ${height}px; width: ${width}px`"
     @mousedown="
       (e) =>
         emit('down', {
@@ -45,10 +44,8 @@ const emit = defineEmits<{
       <rect
         :width="`${width}px`"
         :height="`${height}px`"
-        x="1"
-        y="1"
         fill="oklch(59.6% 0.145 163.225)"
-        rx="10"
+        rx="7"
       />
       <text x="10px" y="20px" font-size="14" fill="white" font-weight="bolder" text-anchor="start">
         {{ title }}
@@ -61,7 +58,7 @@ const emit = defineEmits<{
   position: absolute;
   inset: 0;
   border: 1px solid oklch(21% 0.034 264.665);
-  border-radius: 10px;
+  border-radius: 7px;
   cursor: pointer;
   user-select: none;
 }
