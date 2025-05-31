@@ -1,6 +1,7 @@
 import {
   heightCalendarRow,
   heightCalendarTitle,
+  minWidthCalendarColumn,
   widthCalendarAside,
   widthStroke,
 } from '@/constants/constants'
@@ -59,13 +60,14 @@ export const useCalendarStore = defineStore('calendar', {
         state.contextCoord = state.nodeContext.getBoundingClientRect()
         state.contextWidth = state.contextCoord.width
         state.columnWidth = (state.contextCoord.width - widthCalendarAside) / state.hours.length
-        state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
 
-        if (state.columnWidth < 30) {
-          state.nodeContext.style.width = `${state.columnWidth * state.hours.length}px`
+        if (state.columnWidth < minWidthCalendarColumn) {
+          state.nodeContext.style.width = `${minWidthCalendarColumn * state.hours.length + widthCalendarAside}px`
           state.contextCoord = state.nodeContext?.getBoundingClientRect()
           state.columnWidth = state.contextCoord?.width / state.hours.length
         }
+
+        state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
       }
 
       return state.hours.map((h, index) => {

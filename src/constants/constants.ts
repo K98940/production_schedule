@@ -6,3 +6,5 @@ export const heightCalendarTitle = 30
 export const widthCalendarAside = 100
 /**Ширина линии таблицы (SVG элемента)  */
 export const widthStroke = 2
+/**Минимальная ширина колонки календаря (колонка отображающая 1 час) */
+export const minWidthCalendarColumn = 30
