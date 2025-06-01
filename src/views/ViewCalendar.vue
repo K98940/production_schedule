@@ -48,17 +48,13 @@ onMounted(() => {
           :width="task.width"
           :height="task.height"
           :title="task.title"
+          :duration="task.duration"
           @down="handleMouseDown"
           @up="handleMouseUp"
           @move="handleMouseMove"
         />
       </TheGridLineHorizontal>
-      <TheLeftSide
-        v-for="(device, indexDevice) in data.tasks"
-        :key="device[0].deviceID"
-        :index-device="indexDevice"
-        :title="device[0].deviceTitle"
-      />
+      <TheLeftSide />
     </div>
   </div>
 </template>
