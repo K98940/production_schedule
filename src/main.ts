@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}15${suffixDate}`).getTime() -
           new Date(`${prefixDate}11${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle,
+        coordY: heightCalendarTitle + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -98,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}19${suffixDate}`).getTime() -
           new Date(`${prefixDate}17${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle,
+        coordY: heightCalendarTitle + 3,
         nextId: 3,
         width: 0,
         height: heightCalendarRow - 4,
@@ -116,7 +116,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}10${suffixDate}`).getTime() -
           new Date(`${prefixDate}00${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow,
+        coordY: heightCalendarTitle + heightCalendarRow + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -132,7 +132,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}22${suffixDate}`).getTime() -
           new Date(`${prefixDate}20${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow,
+        coordY: heightCalendarTitle + heightCalendarRow + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}02${suffixDate}`).getTime() -
           new Date(`${prefixDate}00${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        coordY: heightCalendarTitle + heightCalendarRow * 2 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -166,7 +166,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}11${suffixDate}`).getTime() -
           new Date(`${prefixDate}08${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        coordY: heightCalendarTitle + heightCalendarRow * 2 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -182,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}17${suffixDate}`).getTime() -
           new Date(`${prefixDate}14${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 2,
+        coordY: heightCalendarTitle + heightCalendarRow * 2 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -200,7 +200,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}05${suffixDate}`).getTime() -
           new Date(`${prefixDate}03${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 3,
+        coordY: heightCalendarTitle + heightCalendarRow * 3 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -218,7 +218,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}06${suffixDate}`).getTime() -
           new Date(`${prefixDate}04${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 4,
+        coordY: heightCalendarTitle + heightCalendarRow * 4 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -236,7 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}09${suffixDate}`).getTime() -
           new Date(`${prefixDate}05${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 5,
+        coordY: heightCalendarTitle + heightCalendarRow * 5 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -254,7 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}09${suffixDate}`).getTime() -
           new Date(`${prefixDate}07${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 6,
+        coordY: heightCalendarTitle + heightCalendarRow * 6 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -272,7 +272,7 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}13${suffixDate}`).getTime() -
           new Date(`${prefixDate}10${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 7,
+        coordY: heightCalendarTitle + heightCalendarRow * 7 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
@@ -281,57 +281,6 @@ window.addEventListener('DOMContentLoaded', () => {
         deviceTitle: 'Сушильная печь',
       },
     ],
-    // [
-    //   {
-    //     id: 13,
-    //     dateStartISO: `${prefixDate}12${suffixDate}`,
-    //     dateEndISO: `${prefixDate}14${suffixDate}`,
-    //     duration:
-    //       new Date(`${prefixDate}14${suffixDate}`).getTime() -
-    //       new Date(`${prefixDate}12${suffixDate}`).getTime(),
-    //     coordX: 0,
-    //     coordY: heightCalendarTitle + heightCalendarRow * 8,
-    //     nextId: 0,
-    //     width: 0,
-    //     height: heightCalendarRow - 4,
-    //     title: 'task-13',
-    //     deviceID: '9',
-    //   },
-    // ],
-    // [
-    //   {
-    //     id: 14,
-    //     dateStartISO: `${prefixDate}15${suffixDate}`,
-    //     dateEndISO: `${prefixDate}18${suffixDate}`,
-    //     duration:
-    //       new Date(`${prefixDate}18${suffixDate}`).getTime() -
-    //       new Date(`${prefixDate}15${suffixDate}`).getTime(),
-    //     coordX: 0,
-    //     coordY: heightCalendarTitle + heightCalendarRow * 9,
-    //     nextId: 0,
-    //     width: 0,
-    //     height: heightCalendarRow - 4,
-    //     title: 'task-14',
-    //     deviceID: '10',
-    //   },
-    // ],
-    // [
-    //   {
-    //     id: 15,
-    //     dateStartISO: `${prefixDate}16${suffixDate}`,
-    //     dateEndISO: `${prefixDate}19${suffixDate}`,
-    //     duration:
-    //       new Date(`${prefixDate}19${suffixDate}`).getTime() -
-    //       new Date(`${prefixDate}16${suffixDate}`).getTime(),
-    //     coordX: 0,
-    //     coordY: heightCalendarTitle + heightCalendarRow * 10,
-    //     nextId: 0,
-    //     width: 0,
-    //     height: heightCalendarRow - 4,
-    //     title: 'task-15',
-    //     deviceID: '11',
-    //   },
-    // ],
   ]
 
   handleChangeDateRange([calendar.dateStart, calendar.dateFinish])

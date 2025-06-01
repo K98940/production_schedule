@@ -48,6 +48,7 @@ onMounted(() => {
           :width="task.width"
           :height="task.height"
           :title="task.title"
+          :duration="task.duration"
           @down="handleMouseDown"
           @up="handleMouseUp"
           @move="handleMouseMove"
