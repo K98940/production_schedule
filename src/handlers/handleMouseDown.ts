@@ -12,7 +12,11 @@ export const handleMouseDown = ({
 
   common.startX = startX
   common.startY = startY
-  common.idTask = idTask
+  setTimeout(() => {
+    if (common.indexActiveElement != -1) {
+      common.idTask = idTask
+    }
+  }, 500)
 
   common.selectedDevice = indexDevice
   common.indexActiveElement = indexTask
