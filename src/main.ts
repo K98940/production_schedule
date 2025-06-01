@@ -281,6 +281,57 @@ window.addEventListener('DOMContentLoaded', () => {
         deviceTitle: 'Сушильная печь',
       },
     ],
+    // [
+    //   {
+    //     id: 13,
+    //     dateStartISO: `${prefixDate}12${suffixDate}`,
+    //     dateEndISO: `${prefixDate}14${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}14${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}12${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 8,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-13',
+    //     deviceID: '9',
+    //   },
+    // ],
+    // [
+    //   {
+    //     id: 14,
+    //     dateStartISO: `${prefixDate}15${suffixDate}`,
+    //     dateEndISO: `${prefixDate}18${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}18${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}15${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 9,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-14',
+    //     deviceID: '10',
+    //   },
+    // ],
+    // [
+    //   {
+    //     id: 15,
+    //     dateStartISO: `${prefixDate}16${suffixDate}`,
+    //     dateEndISO: `${prefixDate}19${suffixDate}`,
+    //     duration:
+    //       new Date(`${prefixDate}19${suffixDate}`).getTime() -
+    //       new Date(`${prefixDate}16${suffixDate}`).getTime(),
+    //     coordX: 0,
+    //     coordY: heightCalendarTitle + heightCalendarRow * 10,
+    //     nextId: 0,
+    //     width: 0,
+    //     height: heightCalendarRow - 4,
+    //     title: 'task-15',
+    //     deviceID: '11',
+    //   },
+    // ],
   ]
 
   handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
