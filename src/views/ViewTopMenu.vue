@@ -27,6 +27,7 @@ const dates = computed({
         :manualInput="false"
         dateFormat="dd.mm.yy"
         inputClass="!bg-purple-50"
+        :selectOtherMonths="true"
       />
     </div>
     <p class="text-right text-s">
