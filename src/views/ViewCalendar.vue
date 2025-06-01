@@ -10,17 +10,28 @@ import { handleMouseDown } from '@/handlers/handleMouseDown'
 import TheGridLineHorizontal from '@/components/TheGridLineHorizontal.vue'
 import { heightCalendarRow, heightCalendarTitle } from '@/constants/constants'
 import TheLeftSide from '@/components/TheLeftSide.vue'
+import ViewCardDialog from './viewCardDialog.vue'
 
 const calendar = useCalendarStore()
 const data = useDataStore()
 
 const contextCalendar = ref<HTMLDivElement | null>(null)
+const isCardDialogVisible = ref(false)
+const currentIndexDevice = ref<number>(-1)
+const currentIndexTask = ref<number>(-1)
 
 onMounted(() => {
   calendar.nodeContext = contextCalendar.value
   calendar.grid = calendar.getGridData
 })
+
+const handleOpenCardDialog = (indexDevice: number, indexTask: number) => {
+  currentIndexDevice.value = indexDevice
+  currentIndexTask.value = indexTask
+  isCardDialogVisible.value = true
+}
 </script>
+
 <template>
   <div class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto">
     <div class="relative shrink-0" ref="contextCalendar">
@@ -52,12 +63,20 @@ onMounted(() => {
           @down="handleMouseDown"
           @up="handleMouseUp"
           @move="handleMouseMove"
+          @open-card-dialog="handleOpenCardDialog"
         />
       </TheGridLineHorizontal>
       <TheLeftSide />
     </div>
   </div>
+  <ViewCardDialog
+    :visible="isCardDialogVisible"
+    @close="isCardDialogVisible = false"
+    :index-device="currentIndexDevice"
+    :index-task="currentIndexTask"
+  />
 </template>
+
 <style>
 p {
   user-select: none;

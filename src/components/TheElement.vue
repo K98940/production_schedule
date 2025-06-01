@@ -30,6 +30,7 @@ const emit = defineEmits<{
   (ev: 'down', props: MouseDownProps): void
   (ev: 'up', e: MouseEvent): void
   (ev: 'move', e: MouseEvent): void
+  (ev: 'openCardDialog', indexDevice: number, indexTask: number): void
 }>()
 
 const common = useCommonStore()
@@ -41,6 +42,7 @@ const popoverShiftY = heightCalendarRow + 5
   <svg
     class="svg"
     :style="`transform: translate(${coordX}px, ${coordY}px); height: ${height}px; width: ${width}px`"
+    @dblclick="$emit('openCardDialog', indexDevice, indexTask)"
     @mousedown="
       (e) => {
         emit('down', {
