@@ -28,6 +28,6 @@ const dates = computed({
         :selectOtherMonths="true"
       />
     </div>
-    <p class="text-right text-s"></p>
+    <p class="text-right text-s">Дабл клик по карточке открывает диалог карточки</p>
   </header>
 </template>
