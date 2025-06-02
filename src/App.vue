@@ -3,6 +3,8 @@ import ViewTopMenu from './views/ViewTopMenu.vue'
 import ViewCalendar from './views/ViewCalendar.vue'
 import { handleMouseUp } from './handlers/handleMouseUp'
 import { handleMouseMove } from './handlers/handleMouseMove'
+//TODO добавить диалог изменения карточки
+//TODO При движении карточки должны меняться и её данные
 </script>
 
 <template>

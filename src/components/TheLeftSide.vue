@@ -17,7 +17,7 @@ const data = useDataStore()
     :key="device[0].deviceID"
     :index-device="indexDevice"
     :title="device[0].deviceTitle"
-    class="fixed-column flex justify-center items-center text-center text-white bg-indigo-950"
+    class="fixed-column flex justify-center items-center text-xm text-center text-white bg-indigo-950"
     :style="`
       width: ${widthCalendarAside}px;
       height: ${heightCalendarRow}px`"
