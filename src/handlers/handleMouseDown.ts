@@ -16,7 +16,7 @@ export const handleMouseDown = ({
     if (common.indexActiveElement != -1) {
       common.idTask = idTask
     }
-  }, 500)
+  }, 250)
 
   common.selectedDevice = indexDevice
   common.indexActiveElement = indexTask

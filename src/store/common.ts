@@ -6,6 +6,7 @@ export const useCommonStore = defineStore('common', () => {
   const indexActiveElement = ref(-1)
   /**Выбранное устройство (оборудование, станок и т.п). */
   const selectedDevice = ref()
+  /**ID задачи/карточки на которую нажал пользователь (активная карточка)*/
   const idTask = ref(0)
   const startX = ref(0)
   const startY = ref(0)
@@ -13,6 +14,7 @@ export const useCommonStore = defineStore('common', () => {
   const coordX = ref(0)
   const newCoordX = ref(0)
   const newDate = ref<Date>(new Date())
+  const isIntersecting = ref(false)
 
   return {
     indexActiveElement,
@@ -24,5 +26,6 @@ export const useCommonStore = defineStore('common', () => {
     newCoordX,
     newDate,
     selectedDevice,
+    isIntersecting,
   }
 })

@@ -12,7 +12,7 @@ const dates = computed({
     if (!newDates[1]) return
     calendar.dateStart = newDates[0]
     calendar.dateFinish = newDates[1]
-    handleChangeDateRange(dates.value)
+    handleChangeDateRange([dates.value[0], dates.value[1]])
   },
 })
 </script>
