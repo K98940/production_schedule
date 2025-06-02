@@ -1,10 +1,9 @@
 import { useCalendarStore } from '@/store/calendar'
 import { useDataStore } from '@/store/data'
 
-export const handleChangeDateRange = (dates: Date[]) => {
+export const handleChangeDateRange = (dates: [Date?, Date?]) => {
   const calendar = useCalendarStore()
   const data = useDataStore()
-
   const offsetTimeZone = dates[0]
     ? -dates[0].getTimezoneOffset() / 60
     : dates[1]
