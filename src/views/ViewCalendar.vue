@@ -33,7 +33,10 @@ const handleOpenCardDialog = (indexDevice: number, indexTask: number) => {
 </script>
 
 <template>
-  <div class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto">
+  <div
+    id="calendar-container"
+    class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto"
+  >
     <div class="relative shrink-0" ref="contextCalendar">
       <TheGridLineVertical
         v-for="line in calendar.grid"

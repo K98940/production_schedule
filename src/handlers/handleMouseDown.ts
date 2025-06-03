@@ -13,11 +13,11 @@ export const handleMouseDown = ({
   common.startX = startX
   common.startY = startY
   setTimeout(() => {
-    if (common.indexActiveElement != -1) {
+    if (common.indexActiveCard != -1) {
       common.idTask = idTask
     }
   }, 250)
 
   common.selectedDevice = indexDevice
-  common.indexActiveElement = indexTask
+  common.indexActiveCard = indexTask
 }

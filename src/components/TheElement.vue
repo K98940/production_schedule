@@ -61,6 +61,7 @@ const popoverStyle = computed(() => ({
 
 <template>
   <svg
+    :id="`${id}`"
     ref="svgElement"
     class="svg"
     :style="svgStyle"
