@@ -23,7 +23,7 @@ export const useCalendarStore = defineStore('calendar', {
     workTimeStart: '08:00' as string,
     workTimeFinish: '17:00' as string,
     nodeContext: null as HTMLDivElement | null,
-    contextCoord: null as unknown as DOMRect,
+    contextRect: null as unknown as DOMRect,
     contextWidth: undefined as undefined | number,
     columnWidth: undefined as undefined | number,
     hours: [] as number[],
@@ -57,14 +57,15 @@ export const useCalendarStore = defineStore('calendar', {
       state.hours = this.getSequenceHours
 
       if (state.nodeContext) {
-        state.contextCoord = state.nodeContext.getBoundingClientRect()
-        state.contextWidth = state.contextCoord.width
-        state.columnWidth = (state.contextCoord.width - widthCalendarAside) / state.hours.length
+        state.contextRect = state.nodeContext.getBoundingClientRect()
+        state.contextWidth = state.contextRect.width
+        state.columnWidth = (state.contextRect.width - widthCalendarAside) / state.hours.length
 
         if (state.columnWidth < minWidthCalendarColumn) {
           state.nodeContext.style.width = `${minWidthCalendarColumn * state.hours.length + widthCalendarAside}px`
-          state.contextCoord = state.nodeContext?.getBoundingClientRect()
-          state.columnWidth = (state.contextCoord.width - widthCalendarAside) / state.hours.length
+          state.contextRect = state.nodeContext.getBoundingClientRect()
+          state.contextWidth = state.contextRect.width
+          state.columnWidth = (state.contextRect.width - widthCalendarAside) / state.hours.length
         }
 
         state.nodeContext.style.flexBasis = `${heightCalendarTitle + data.devices.length * heightCalendarRow}px`
@@ -80,7 +81,7 @@ export const useCalendarStore = defineStore('calendar', {
       })
     },
     pixelsPerMinute(state) {
-      return (state.contextCoord?.width - widthCalendarAside) / (state.countMiliseconds / 1000 / 60)
+      return (state.contextRect?.width - widthCalendarAside) / (state.countMiliseconds / 1000 / 60)
     },
   },
   actions: {
