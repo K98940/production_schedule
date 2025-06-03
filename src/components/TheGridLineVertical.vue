@@ -26,7 +26,7 @@ const calcBgColor = (time: string): string => {
     <g>
       <line
         :x1="widthStroke"
-        :y1="topPadding"
+        :y1="text == '00' ? 0 : topPadding"
         y2="100%"
         :stroke="text == '00' ? colorDark : colorLight"
         :stroke-width="widthStroke"
