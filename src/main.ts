@@ -138,11 +138,11 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       {
         id: 10,
-        dateStartISO: `${prefixDate}14:00${suffixDate}`,
+        dateStartISO: `${prefixDate}13:00${suffixDate}`,
         dateEndISO: `${prefixDate}18:00${suffixDate}`,
         duration:
           new Date(`${prefixDate}18:00${suffixDate}`).getTime() -
-          new Date(`${prefixDate}14:00${suffixDate}`).getTime(),
+          new Date(`${prefixDate}13:00${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle + heightCalendarRow * 2 + 3,
         nextId: 0,
@@ -276,11 +276,11 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       {
         id: 12,
-        dateStartISO: `${prefixDate}22:01${suffixDate}`,
-        dateEndISO: `${prefixDate}23:50${suffixDate}`,
+        dateStartISO: `${prefixDate}22:00${suffixDate}`,
+        dateEndISO: `${prefixDate}23:00${suffixDate}`,
         duration:
-          new Date(`${prefixDate}23:50${suffixDate}`).getTime() -
-          new Date(`${prefixDate}22:01${suffixDate}`).getTime(),
+          new Date(`${prefixDate}23:00${suffixDate}`).getTime() -
+          new Date(`${prefixDate}22:00${suffixDate}`).getTime(),
         coordX: 0,
         coordY: heightCalendarTitle + heightCalendarRow * 7 + 3,
         nextId: 0,
