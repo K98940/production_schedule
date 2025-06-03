@@ -13,14 +13,14 @@ import { heightCalendarRow, heightCalendarTitle } from './constants/constants'
 
 let debounceTimer = 0
 const devices = {
-  '1': 'Ленточная пила',
-  2: 'Фрезерный станок',
-  3: 'Шлифов. станок',
-  4: 'Сверлильный станок',
-  5: 'Сборочный конвейер',
-  6: 'Покрасоч. камера',
-  7: 'Сушка ',
-  8: 'Упаковоч. автомат',
+  1: 'НА 1',
+  2: 'НА 2',
+  3: 'РМС 1',
+  4: 'РМС 2',
+  5: 'РМС 3',
+  6: 'РМС 4',
+  7: 'РМС 5',
+  8: 'Сушильная печь 1',
 }
 
 const app = createApp(App)
@@ -241,24 +241,6 @@ window.addEventListener('DOMContentLoaded', () => {
     ],
     [
       {
-        id: 8,
-        dateStartISO: `${prefixDate}16:01${suffixDate}`,
-        dateEndISO: `${prefixDate}19:00${suffixDate}`,
-        duration:
-          new Date(`${prefixDate}19:00${suffixDate}`).getTime() -
-          new Date(`${prefixDate}16:01${suffixDate}`).getTime(),
-        coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 6 + 3,
-        nextId: 0,
-        width: 0,
-        height: heightCalendarRow - 4,
-        title: 'Сушка после покраски',
-        deviceID: '7',
-        deviceTitle: devices['7'],
-      },
-    ],
-    [
-      {
         id: 9,
         dateStartISO: `${prefixDate}19:00${suffixDate}`,
         dateEndISO: `${prefixDate}22:00${suffixDate}`,
@@ -266,13 +248,13 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}22:00${suffixDate}`).getTime() -
           new Date(`${prefixDate}19:00${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 7 + 3,
+        coordY: heightCalendarTitle + heightCalendarRow * 6 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
         title: 'Финальная сборка',
-        deviceID: '8',
-        deviceTitle: devices['8'],
+        deviceID: '7',
+        deviceTitle: devices['7'],
       },
       {
         id: 12,
@@ -282,11 +264,29 @@ window.addEventListener('DOMContentLoaded', () => {
           new Date(`${prefixDate}23:00${suffixDate}`).getTime() -
           new Date(`${prefixDate}22:00${suffixDate}`).getTime(),
         coordX: 0,
-        coordY: heightCalendarTitle + heightCalendarRow * 7 + 3,
+        coordY: heightCalendarTitle + heightCalendarRow * 6 + 3,
         nextId: 0,
         width: 0,
         height: heightCalendarRow - 4,
         title: 'Упаковка готового стула',
+        deviceID: '7',
+        deviceTitle: devices['7'],
+      },
+    ],
+    [
+      {
+        id: 8,
+        dateStartISO: `${prefixDate}16:01${suffixDate}`,
+        dateEndISO: `${prefixDate}19:00${suffixDate}`,
+        duration:
+          new Date(`${prefixDate}19:00${suffixDate}`).getTime() -
+          new Date(`${prefixDate}16:01${suffixDate}`).getTime(),
+        coordX: 0,
+        coordY: heightCalendarTitle + heightCalendarRow * 7 + 3,
+        nextId: 0,
+        width: 0,
+        height: heightCalendarRow - 4,
+        title: 'Сушка после покраски',
         deviceID: '8',
         deviceTitle: devices['8'],
       },
