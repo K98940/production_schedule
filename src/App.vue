@@ -10,7 +10,7 @@ import { handleMouseMove } from './handlers/handleMouseMove'
 
 <template>
   <div
-    class="flex grow flex-col h-full p-4 bg-amber-50"
+    class="flex grow flex-col h-full p-4 bg-purple-500"
     @mouseup="handleMouseUp"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseUp"

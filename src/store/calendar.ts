@@ -57,6 +57,7 @@ export const useCalendarStore = defineStore('calendar', {
       state.hours = this.getSequenceHours
 
       if (state.nodeContext) {
+        state.nodeContext.style.width = `100%`
         state.contextRect = state.nodeContext.getBoundingClientRect()
         state.contextWidth = state.contextRect.width
         state.columnWidth = (state.contextRect.width - widthCalendarAside) / state.hours.length
