@@ -15,4 +15,21 @@ export default defineConfig({
     },
   },
   base: '/v2/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          primevue: ['primevue'],
+          vendor: ['vue', 'pinia'],
+          calendar: ['./src/store/calendar.ts', './src/store/data.ts', './src/store/common.ts'],
+          components: [
+            './src/components/TheElement.vue',
+            './src/components/TheGridLineHorizontal.vue',
+            './src/components/TheGridLineVertical.vue',
+            './src/components/TheLeftSide.vue',
+          ],
+        },
+      },
+    },
+  },
 })
