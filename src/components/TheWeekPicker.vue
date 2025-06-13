@@ -2,6 +2,6 @@
 
 <template>
   <button>
-    <span class="text-3xl cursor-pointer">Неделя</span>
+    <span class="text-xl cursor-pointer">Неделя</span>
   </button>
 </template>

@@ -16,28 +16,28 @@ const selectedShift = ref() // Смена
 const selectedPlanFact = ref() // План/Факт
 
 const sections = ref([
-  { name: 'Участок 01', code: '01' },
+  { name: 'Участок с длинным названием 01', code: '01' },
   { name: 'Участок 02', code: '02' },
   { name: 'Участок 03', code: '03' },
   { name: 'Уч.04', code: '04' },
 ])
 const workshops = ref([
-  { name: 'Цех 01', code: '01' },
+  { name: 'Цех с длинным названием  01', code: '01' },
   { name: 'Цех 02', code: '02' },
   { name: 'Цех 03', code: '03' },
 ])
 const factories = ref([
-  { name: 'Завод 01', code: '01' },
+  { name: 'Завод с длинным названием  01', code: '01' },
   { name: 'Завод 02', code: '02' },
   { name: 'Завод 03', code: '03' },
 ])
 const orders = ref([
-  { name: 'Заказ 01', code: '01' },
+  { name: 'Заказ с длинным названием  01', code: '01' },
   { name: 'Заказ 02', code: '02' },
   { name: 'Заказ 03', code: '03' },
 ])
 const shifts = ref([
-  { name: 'Смена 01', code: '01' },
+  { name: 'Смена с длинным названием  01', code: '01' },
   { name: 'Смена 02', code: '02' },
   { name: 'Смена 03', code: '03' },
 ])
@@ -71,25 +71,17 @@ const dates = computed({
         :selectOtherMonths="true"
       />
     </div>
-    <div class="factory-selectors flex w-[35%] gap-4 p-4 bg-white rounded-md">
+    <div class="factory-selectors flex shrink-0 w-[35%] gap-4 p-4 bg-white rounded-md">
       <Select
         v-model="selectedSection"
         :options="sections"
         optionLabel="name"
         placeholder="Участок"
-        class="text-3xl grow-1"
+        class="text-xl"
+        style="width: calc(33% - 0.5rem)"
       >
-        <template #value="props">
-          <div v-if="props.value" class="">
-            {{
-              props.value.name.length > 9
-                ? props.value.name.slice(0, 6).padEnd(9, '.')
-                : props.value.name
-            }}
-          </div>
-        </template>
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
@@ -100,10 +92,11 @@ const dates = computed({
         :options="workshops"
         optionLabel="name"
         placeholder="Цех"
-        class="text-3xl grow-1"
+        class="text-xl"
+        style="width: calc(33% - 0.5rem)"
       >
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
@@ -114,58 +107,60 @@ const dates = computed({
         :options="factories"
         optionLabel="name"
         placeholder="Завод"
-        class="text-3xl grow-1"
+        class="text-xl"
+        style="width: calc(33% - 0.5rem)"
       >
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
       </Select>
     </div>
 
-    <div class="order-selector flex w-[15%] gap-4 p-4 bg-white rounded-md">
+    <div class="order-selector flex shrink-0 w-[15%] gap-4 p-4 bg-white rounded-md">
       <Select
         v-model="selectedOrder"
         :options="orders"
         optionLabel="name"
         placeholder="Заказ"
-        class="text-3xl w-full"
+        class="text-xl w-full"
+        style="width: 100%"
       >
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
       </Select>
     </div>
 
-    <div class="shift-selector flex w-[10%] gap-4 p-4 bg-white rounded-md">
+    <div class="shift-selector flex shrink-0 w-[10%] gap-4 p-4 bg-white rounded-md">
       <Select
         v-model="selectedShift"
         :options="shifts"
         optionLabel="name"
         placeholder="Смена"
-        class="text-3xl w-full"
+        class="text-xl w-full"
       >
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
       </Select>
     </div>
 
-    <div class="plan-selector flex w-[15%] gap-4 p-4 bg-white rounded-md">
+    <div class="plan-selector flex shrink-0 w-[15%] gap-4 p-4 bg-white rounded-md">
       <Select
         v-model="selectedPlanFact"
         :options="planFact"
         optionLabel="name"
         placeholder="План/факт"
-        class="text-3xl w-full"
+        class="text-xl w-full"
       >
         <template #option="props">
-          <span class="text-2xl">
+          <span class="text-xl">
             {{ props.option.name }}
           </span>
         </template>
