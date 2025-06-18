@@ -3,7 +3,23 @@ import { useCommonStore } from '@/store/common'
 import { useDataStore, type Task } from '@/store/data'
 import { updateTaskDates } from '../hooks/updateTaskDates'
 
+// Throttle через requestAnimationFrame
+let rafId = 0
+let lastEvent: MouseEvent
+
 export const handleMouseMove = (e: MouseEvent) => {
+  lastEvent = e
+
+  // Если кадр уже запрошен, дожидаемся его
+  if (rafId) return
+
+  rafId = requestAnimationFrame(() => {
+    rafId = 0
+    processMouseMove(lastEvent)
+  })
+}
+
+const processMouseMove = (e: MouseEvent) => {
   const common = useCommonStore()
   const data = useDataStore()
 
