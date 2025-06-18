@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { useCalendarStore } from './calendar'
+import { calcTaskPosition } from '@/hooks/calcTaskPosition'
 
 export type Task = {
   id: number
@@ -22,12 +22,11 @@ export const useDataStore = defineStore('data', () => {
   const tasks = ref<Task[][]>([])
 
   const calculateCoord = () => {
-    const calendar = useCalendarStore()
-
     tasks.value.forEach((device) => {
       device.forEach((task) => {
-        task.coordX = calendar.getX(new Date(task.dateStartISO).getTime())
-        task.width = calendar.getWidth(task.duration)
+        const { coordX, width } = calcTaskPosition(task)
+        task.coordX = coordX
+        task.width = width
       })
     })
   }
