@@ -29,7 +29,7 @@ export const handleMouseMove = (e: MouseEvent) => {
  * Проверяет пересечения временных интервалов текущей задачи с другими
  * Возвращает объект с информацией о пересечениях
  */
-const checkTimeIntersections = (
+export const checkTimeIntersections = (
   tasks: Task[],
   activeTask: Task,
 ): {
