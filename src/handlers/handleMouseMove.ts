@@ -47,7 +47,7 @@ const checkTimeIntersections = (
     const passiveStart = new Date(passiveTask.dateStartISO).getTime()
     const passiveEnd = new Date(passiveTask.dateEndISO).getTime()
 
-    const isIntersecting = activeEnd >= passiveStart && activeStart <= passiveEnd
+    const isIntersecting = activeEnd > passiveStart && activeStart < passiveEnd
 
     if (isIntersecting && intersectedIndex === null) {
       intersectedIndex = index
