@@ -56,11 +56,16 @@ const dates = computed({
     handleChangeDateRange([dates.value[0], dates.value[1]])
   },
 })
+
+const handleChangeDay = () => {
+  const currentDay = new Date()
+  handleChangeDateRange([currentDay, currentDay])
+}
 </script>
 <template>
   <header class="flex grow-0 w-full gap-4 justify-between mb-4">
     <div class="date-selectors flex w-[25%] gap-4 p-4 bg-white rounded-md">
-      <TheDayPicker />
+      <TheDayPicker @changeDate="handleChangeDay" />
       <TheWeekPicker />
       <DatePicker
         v-model="dates"
