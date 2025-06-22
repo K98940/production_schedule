@@ -59,7 +59,7 @@ const dates = computed({
 
 const handleChangeDay = () => {
   const currentDay = new Date()
-  handleChangeDateRange([currentDay])
+  handleChangeDateRange([currentDay, currentDay])
 }
 
 const handleChangeWeek = () => {
