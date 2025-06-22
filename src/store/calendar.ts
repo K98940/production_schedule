@@ -83,7 +83,7 @@ export const useCalendarStore = defineStore('calendar', {
             day: '2-digit',
             month: '2-digit',
             year: '2-digit',
-          })} (${d.toLocaleDateString('ru-RU', { weekday: 'short' })})`,
+          })}, ${d.toLocaleDateString('ru-RU', { weekday: 'short' })}`,
         }
       })
     },
