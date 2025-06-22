@@ -1,7 +1,7 @@
 /**Высота строки в календаре, а так же высота карточки задания в календаре */
 export const heightCalendarRow = 80
 /**Высота шапки в календаре */
-export const heightCalendarTitle = 30
+export const heightCalendarTitle = 60
 /**Ширина левой панели в календаре (с названиями устройств, станков…) */
 export const widthCalendarAside = 100
 /**Ширина линии таблицы (SVG элемента)  */

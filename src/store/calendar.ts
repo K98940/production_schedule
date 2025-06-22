@@ -11,6 +11,7 @@ import { useDataStore } from './data'
 export type CalendarGridData = {
   x1: number
   text: string
+  day: string
 }
 
 export const useCalendarStore = defineStore('calendar', {
@@ -78,6 +79,11 @@ export const useCalendarStore = defineStore('calendar', {
         return {
           x1: index * (state.columnWidth || 0) + widthCalendarAside,
           text: `${hour}`.padStart(2, '0'),
+          day: `${d.toLocaleDateString('ru-RU', {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+          })} (${d.toLocaleDateString('ru-RU', { weekday: 'short' })})`,
         }
       })
     },

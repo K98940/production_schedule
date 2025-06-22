@@ -43,6 +43,7 @@ const handleOpenCardDialog = (indexDevice: number, indexTask: number) => {
         :key="line.text"
         :text="line.text"
         :x1="line.x1"
+        :day="line.day"
       />
       <TheGridLineHorizontal :y1="heightCalendarTitle" />
 
