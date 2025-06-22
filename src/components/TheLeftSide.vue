@@ -30,5 +30,6 @@ const data = useDataStore()
   position: sticky;
   left: 0;
   z-index: 1;
+  user-select: none;
 }
 </style>

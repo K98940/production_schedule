@@ -35,7 +35,7 @@ const handleOpenCardDialog = (indexDevice: number, indexTask: number) => {
 <template>
   <div
     id="calendar-container"
-    class="scroll flex flex-col grow border-slate-400 border-3 rounded-md overflow-auto"
+    class="scroll flex flex-col grow border-purple-700 border-3 rounded-md overflow-auto"
   >
     <div class="relative shrink-0" ref="contextCalendar">
       <TheGridLineVertical
@@ -43,6 +43,7 @@ const handleOpenCardDialog = (indexDevice: number, indexTask: number) => {
         :key="line.text"
         :text="line.text"
         :x1="line.x1"
+        :day="line.day"
       />
       <TheGridLineHorizontal :y1="heightCalendarTitle" />
 

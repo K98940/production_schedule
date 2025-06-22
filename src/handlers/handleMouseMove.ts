@@ -3,7 +3,23 @@ import { useCommonStore } from '@/store/common'
 import { useDataStore, type Task } from '@/store/data'
 import { updateTaskDates } from '../hooks/updateTaskDates'
 
+// Throttle через requestAnimationFrame
+let rafId = 0
+let lastEvent: MouseEvent
+
 export const handleMouseMove = (e: MouseEvent) => {
+  lastEvent = e
+
+  // Если кадр уже запрошен, дожидаемся его
+  if (rafId) return
+
+  rafId = requestAnimationFrame(() => {
+    rafId = 0
+    processMouseMove(lastEvent)
+  })
+}
+
+const processMouseMove = (e: MouseEvent) => {
   const common = useCommonStore()
   const data = useDataStore()
 
@@ -29,7 +45,7 @@ export const handleMouseMove = (e: MouseEvent) => {
  * Проверяет пересечения временных интервалов текущей задачи с другими
  * Возвращает объект с информацией о пересечениях
  */
-const checkTimeIntersections = (
+export const checkTimeIntersections = (
   tasks: Task[],
   activeTask: Task,
 ): {
@@ -47,7 +63,7 @@ const checkTimeIntersections = (
     const passiveStart = new Date(passiveTask.dateStartISO).getTime()
     const passiveEnd = new Date(passiveTask.dateEndISO).getTime()
 
-    const isIntersecting = activeEnd >= passiveStart && activeStart <= passiveEnd
+    const isIntersecting = activeEnd > passiveStart && activeStart < passiveEnd
 
     if (isIntersecting && intersectedIndex === null) {
       intersectedIndex = index

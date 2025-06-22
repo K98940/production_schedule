@@ -4,22 +4,24 @@ import { useDataStore } from '@/store/data'
 export const handleChangeDateRange = (dates: [Date?, Date?]) => {
   const calendar = useCalendarStore()
   const data = useDataStore()
-  const offsetTimeZone = dates[0]
-    ? -dates[0].getTimezoneOffset() / 60
-    : dates[1]
-      ? -dates[1].getTimezoneOffset() / 60
+  const [startRaw, finishRaw] = dates
+
+  const offsetTimeZone = startRaw
+    ? -startRaw.getTimezoneOffset() / 60
+    : finishRaw
+      ? -finishRaw.getTimezoneOffset() / 60
       : 0
 
-  const dateStart: Date = dates[0] as Date
-  dateStart?.setHours(dateStart.getHours() + offsetTimeZone)
-  const start = dateStart?.toISOString().replace('Z', '')
-  calendar.setDateStart(start)
+  if (startRaw) {
+    const dateStart = new Date(startRaw)
+    dateStart.setHours(dateStart.getHours() + offsetTimeZone)
+    calendar.setDateStart(dateStart.toISOString().replace('Z', ''))
+  }
 
-  if (dates[1]) {
-    const dateFinish: Date = dates[1] as Date
+  if (finishRaw) {
+    const dateFinish = new Date(finishRaw)
     dateFinish.setHours(dateFinish.getHours() + offsetTimeZone)
-    const finish = dateFinish.toISOString().replace('Z', '')
-    calendar.setDateFinish(finish)
+    calendar.setDateFinish(dateFinish.toISOString().replace('Z', ''))
   }
 
   calendar.grid = calendar.getGridData
