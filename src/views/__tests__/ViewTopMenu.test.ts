@@ -61,6 +61,43 @@ describe('ViewTopMenu', () => {
     expect(firstDate.getTime()).toBe(secondDate.getTime())
   })
 
+  it('должен вызывать handleChangeDateRange с диапазоном недели при обработке события changeDate от TheWeekPicker', async () => {
+    // Мокаем TheWeekPicker с событием
+    vi.mock('@/components/TheWeekPicker.vue', () => ({
+      default: {
+        template: '<button data-testid="week-picker" @click="$emit(\'changeDate\')">Неделя</button>',
+        emits: ['changeDate'],
+      },
+    }))
+
+    // Перемонтируем компонент с новым моком
+    const newWrapper = mount(ViewTopMenu)
+
+    // Находим кнопку TheWeekPicker и кликаем по ней
+    const weekPickerButton = newWrapper.find('[data-testid="week-picker"]')
+    await weekPickerButton.trigger('click')
+
+    // Проверяем, что handleChangeDateRange был вызван
+    expect(handleChangeDateRange).toHaveBeenCalledTimes(1)
+
+    // Проверяем, что функция была вызвана с массивом из двух дат
+    const callArgs = vi.mocked(handleChangeDateRange).mock.calls[0][0]
+    expect(callArgs).toHaveLength(2)
+    expect(callArgs[0]).toBeInstanceOf(Date)
+    expect(callArgs[1]).toBeInstanceOf(Date)
+
+    // Проверяем, что даты разные (начало и конец недели)
+    const firstDate = callArgs[0] as Date
+    const secondDate = callArgs[1] as Date
+    expect(firstDate.getTime()).not.toBe(secondDate.getTime())
+
+    // Проверяем, что первая дата - понедельник (день недели = 1)
+    expect(firstDate.getDay()).toBe(1)
+
+    // Проверяем, что вторая дата - воскресенье (день недели = 0)
+    expect(secondDate.getDay()).toBe(0)
+  })
+
   it('должен содержать все необходимые селекторы', () => {
     const wrapper = mount(ViewTopMenu)
 
