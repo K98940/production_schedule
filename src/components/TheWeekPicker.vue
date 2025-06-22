@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineEmits(['changeDate'])
+</script>
 
 <template>
-  <button>
+  <button @click="$emit('changeDate')">
     <span class="text-xl cursor-pointer">Неделя</span>
   </button>
 </template>

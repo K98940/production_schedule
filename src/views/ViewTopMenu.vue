@@ -61,12 +61,30 @@ const handleChangeDay = () => {
   const currentDay = new Date()
   handleChangeDateRange([currentDay, currentDay])
 }
+
+const handleChangeWeek = () => {
+  const currentDate = new Date()
+
+  // Получаем понедельник текущей недели
+  const monday = new Date(currentDate)
+  const dayOfWeek = currentDate.getDay()
+  const daysToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1 // 0 = воскресенье, 1 = понедельник
+  monday.setDate(currentDate.getDate() - daysToMonday)
+  monday.setHours(0, 0, 0, 0)
+
+  // Получаем воскресенье текущей недели
+  const sunday = new Date(monday)
+  sunday.setDate(monday.getDate() + 6)
+  sunday.setHours(23, 59, 59, 999)
+
+  handleChangeDateRange([monday, sunday])
+}
 </script>
 <template>
   <header class="flex grow-0 w-full gap-4 justify-between mb-4">
     <div class="date-selectors flex w-[25%] gap-4 p-4 bg-white rounded-md">
       <TheDayPicker @changeDate="handleChangeDay" />
-      <TheWeekPicker />
+      <TheWeekPicker @changeDate="handleChangeWeek" />
       <DatePicker
         v-model="dates"
         selectionMode="range"
