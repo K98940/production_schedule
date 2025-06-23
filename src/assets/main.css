@@ -21,13 +21,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --w-scroll: 5px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: var(--w-scroll);
-  &::-webkit-scrollbar {
-    width: var(--w-scroll);
-  }
+
   &::-webkit-scrollbar-track {
     background-color: #ebebeb; /* Цвет фона трека прокрутки */
   }
