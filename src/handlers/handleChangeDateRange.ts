@@ -1,5 +1,6 @@
 import { useCalendarStore } from '@/store/calendar'
 import { useDataStore } from '@/store/data'
+import { generateMockTasks } from '@/hooks/generateMockTasks'
 
 export const handleChangeDateRange = (dates: [Date?, Date?]) => {
   const calendar = useCalendarStore()
@@ -23,6 +24,9 @@ export const handleChangeDateRange = (dates: [Date?, Date?]) => {
     dateFinish.setHours(dateFinish.getHours() + offsetTimeZone)
     calendar.setDateFinish(dateFinish.toISOString().replace('Z', ''))
   }
+
+  // генерируем новые задачи в зависимости от обновлённого диапазона дат
+  data.tasks = generateMockTasks(calendar.dateStart, calendar.dateFinish)
 
   calendar.grid = calendar.getGridData
   data.calculateCoord()
