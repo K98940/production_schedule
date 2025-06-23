@@ -17,14 +17,15 @@ const calcBgColor = (time: string): string => {
   const isWorkTime = workTime.includes(time)
   return isWorkTime ? 'bg-emerald-50' : 'bg-stone-200'
 }
-const startDay = computed(() => props.x1 + (calendar.columnWidth || 0) * 8)
-const finishDay = computed(() => (calendar.columnWidth || 0) * 11)
+const startDay = computed(() => props.x1 + 3)
+const finishDay = computed(() => (calendar.columnWidth || 0) * 24 - 3)
 </script>
 
 <template>
-  <svg v-if="text == '00'"
-  :class="`${calcBgColor(text)}`"
-  :style="`z-index: 1; position: absolute; transform: translate(${startDay}px, 0px); height: 2rem; width: ${finishDay}px;`"
+  <svg
+    v-if="text == '00'"
+    class="bg-emerald-50 border-b-1 border-stone-400"
+    :style="`z-index: 1; position: absolute; transform: translate(${startDay}px, 0px); height: 2rem; width: ${finishDay}px;`"
   >
     <text x="50%" :y="25" font-size="20" text-anchor="middle">
       {{ day }}
@@ -42,7 +43,7 @@ const finishDay = computed(() => (calendar.columnWidth || 0) * 11)
         :stroke="text == '00' ? colorDark : colorLight"
         :stroke-width="widthStroke"
       />
-      <text :x="(calendar.columnWidth || 0) / 2 - 6" :y="heightCalendarTitle / 1.3" font-size="12">
+      <text :x="(calendar.columnWidth || 0) / 2 - 6" :y="heightCalendarTitle / 1.15" font-size="12">
         {{ text }}
       </text>
     </g>
