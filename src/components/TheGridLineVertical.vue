@@ -23,6 +23,7 @@ const finishDay = computed(() => (calendar.columnWidth || 0) * 11)
 
 <template>
   <svg v-if="text == '00'"
+  :class="`${calcBgColor(text)}`"
   :style="`z-index: 1; position: absolute; transform: translate(${startDay}px, 0px); height: 2rem; width: ${finishDay}px;`"
   >
     <text x="50%" :y="25" font-size="20" text-anchor="middle">
