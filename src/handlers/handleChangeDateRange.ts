@@ -25,9 +25,9 @@ export const handleChangeDateRange = (dates: [Date?, Date?]) => {
     calendar.setDateFinish(dateFinish.toISOString().replace('Z', ''))
   }
 
-  calendar.grid = calendar.getGridData
-
   // генерируем новые задачи в зависимости от обновлённого диапазона дат
   data.tasks = generateMockTasks(calendar.dateStart, calendar.dateFinish)
+
+  calendar.grid = calendar.getGridData
   data.calculateCoord()
 }
