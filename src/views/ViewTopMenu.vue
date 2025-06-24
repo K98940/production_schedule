@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { handleChangeDateRange } from '@/handlers/handleChangeDateRange'
 import { useCalendarStore } from '@/store/calendar'
+import { useFilterStore } from '@/store/filters'
 import { DatePicker, Select } from 'primevue'
 import { computed, ref } from 'vue'
 import TheDayPicker from '../components/TheDayPicker.vue'
 import TheWeekPicker from '@/components/TheWeekPicker.vue'
 
 const calendar = useCalendarStore()
+const filters = useFilterStore()
 
-const selectedSection = ref() // Участок
-const selectedWorkshop = ref() // Цех
-const selectedFactory = ref() // Цех
-const selectedOrder = ref() // Заказ
-const selectedShift = ref() // Смена
-const selectedPlanFact = ref() // План/Факт
+const selectedSection  = computed({ get: () => filters.selectedSection,  set: v => filters.selectedSection  = v })
+const selectedWorkshop  = computed({ get: () => filters.selectedWorkshop,  set: v => filters.selectedWorkshop  = v })
+const selectedFactory  = computed({ get: () => filters.selectedFactory,  set: v => filters.selectedFactory  = v })
 
 const sections = ref([
   { name: 'Участок с длинным названием 01', code: '01' },
@@ -143,7 +142,7 @@ const handleChangeWeek = () => {
 
     <div class="order-selector flex shrink-0 w-[15%] gap-4 p-4 bg-white rounded-md">
       <Select
-        v-model="selectedOrder"
+        v-model="filters.selectedOrder"
         :options="orders"
         optionLabel="name"
         placeholder="Заказ"
@@ -160,7 +159,7 @@ const handleChangeWeek = () => {
 
     <div class="shift-selector flex shrink-0 w-[10%] gap-4 p-4 bg-white rounded-md">
       <Select
-        v-model="selectedShift"
+        v-model="filters.selectedShift"
         :options="shifts"
         optionLabel="name"
         placeholder="Смена"
@@ -176,7 +175,7 @@ const handleChangeWeek = () => {
 
     <div class="plan-selector flex shrink-0 w-[15%] gap-4 p-4 bg-white rounded-md">
       <Select
-        v-model="selectedPlanFact"
+        v-model="filters.selectedPlanFact"
         :options="planFact"
         optionLabel="name"
         placeholder="План/факт"
