@@ -41,11 +41,10 @@ const popoverShiftY = heightCalendarRow + 5
 const isActive = computed(() => common.idTask === props.id)
 
 const svgStyle = computed(() => ({
-  transform: `translate(${props.coordX}px, ${props.coordY}px)`,
+  transform: `translate3d(${props.coordX}px, ${props.coordY}px, 0)`,
   height: `${props.height}px`,
   width: `${props.width}px`,
-  zIndex: isActive.value ? '2' : '0',
-  boxShadow: isActive.value ? '5px 3px 6px rgba(0, 0, 0, 0.8)' : '3px 3px 8px rgba(0, 0, 0, 0.5)',
+  zIndex: isActive.value ? 2 : 0,
 }))
 
 const popoverStyle = computed(() => ({
@@ -63,7 +62,7 @@ const popoverStyle = computed(() => ({
   <svg
     :id="`${id}`"
     ref="svgElement"
-    class="svg"
+    :class="['svg', { 'svg--active': isActive }]"
     :style="svgStyle"
     @dblclick="$emit('openCardDialog', indexDevice, indexTask)"
     @mousedown="
@@ -118,5 +117,10 @@ const popoverStyle = computed(() => ({
   border-radius: 7px;
   cursor: pointer;
   user-select: none;
+  will-change: transform;
+}
+
+.svg--active {
+  box-shadow: 5px 3px 6px rgba(0, 0, 0, 0.8);
 }
 </style>

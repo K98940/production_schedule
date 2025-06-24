@@ -8,6 +8,7 @@ import App from './App.vue'
 import { DialogService, ToastService, ConfirmationService } from 'primevue'
 import { useCalendarStore } from './store/calendar'
 import { handleChangeDateRange } from './handlers/handleChangeDateRange'
+import { useFilterStore } from './store/filters'
 
 let debounceTimer = 0
 
@@ -57,11 +58,14 @@ window.addEventListener('resize', () => {
   debounceTimer = setTimeout(() => {
     const calendar = useCalendarStore()
     handleChangeDateRange([calendar.dateStart, calendar.dateFinish])
-    console.log('resize')
   }, 1000)
 })
 
 window.addEventListener('DOMContentLoaded', () => {
+  const filters = useFilterStore()
+  filters.selectedFactory = { name: 'Завод с длинным названием  01', code: '01' }
+  filters.selectedWorkshop = { name: 'Цех 02', code: '02' }
+  filters.selectedSection = { name: 'Уч.04', code: '04' }
   // Стартовое отображение (используем дату из предыдущих мок-данных для согласованности с тестами)
   const initialDate = new Date('2025-05-30')
   handleChangeDateRange([initialDate, initialDate])
